@@ -32,5 +32,5 @@ UserInterface::UserInterface(QWidget *parent) throw(QException) : QMainWindow(pa
     // Load debug page
     qDebug() << "Showing page";
     mWebView->setPage(new QWebPage());
-    mWebView->load(QUrl("http://www.google.com/"));
+    mWebView->load(QUrl("http://infoscreen.flatturtle.com/"));
 }
