@@ -8,7 +8,6 @@
 // Library includes
 #include <QtGui/QDesktopServices>
 #include <QtCore/QDir>
-#include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
 #include <QtCore/QDebug>
 
