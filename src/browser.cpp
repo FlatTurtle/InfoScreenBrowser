@@ -35,6 +35,7 @@ WebPage::WebPage(QWidget *parent) : QWebPage(parent)
 // Infoscreen interface
 //
 
+// TODO: remove this and embed the QWebView in a QWidget (didn't seem to expand properly)
 QWebView* Browser::view()
 {
     return mWebView;
@@ -43,7 +44,7 @@ QWebView* Browser::view()
 void Browser::start()
 {
     mWebView->setPage((QWebPage*) new WebPage());
-    mWebView->load(QUrl("http://www.google.be/"));
+    mWebView->load(QUrl("http://infoscreen.flatturtle.com/"));
 }
 
 
