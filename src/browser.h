@@ -21,6 +21,7 @@ namespace iRail
 
         // WebPage interface
         QString userAgentForUrl(const QUrl &iUrl) const;
+        void javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId);
     };
 
     class Browser : public QObject

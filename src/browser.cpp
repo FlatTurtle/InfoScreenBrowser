@@ -79,3 +79,8 @@ QString WebPage::userAgentForUrl(const QUrl &iUrl) const
 {
         return QString("irail-infoscreen");
 }
+
+void WebPage::javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId)
+{
+    qDebug() << "Javascript console message at line " << iLineNumber << " of " << iSourceId << ": " << iMessage;
+}
