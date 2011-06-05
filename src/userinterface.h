@@ -10,7 +10,6 @@
 #include <QtCore/QObject>
 #include <QtCore/QSettings>
 #include <QtGui/QMainWindow>
-#include <QtWebKit/QWebView>
 
 // Local includes
 #include "qexception.h"
@@ -24,12 +23,6 @@ namespace iRail
     public:
         // Construction and destruction
         UserInterface(QWidget *parent = 0) throw(QException);
-
-        // UI slots
-    private slots:
-        void onLoadStarted();
-        void onLoadProgress(int progress);
-        void onLoadFinished(bool ok);
 
     private:
         // Member objects

@@ -14,22 +14,35 @@ namespace iRail
 {
     class WebPage : public QWebPage
     {
+    Q_OBJECT
     public:
         // Construction and destruction
-        WebPage();
+        WebPage(QWidget *parent = 0);
 
         // WebPage interface
         QString userAgentForUrl(const QUrl &iUrl) const;
     };
 
-    class Browser : public QWebView
+    class Browser : public QObject
     {
+    Q_OBJECT
     public:
         // Construction and destruction
-        Browser(QWidget *parent = 0);
+        Browser(QObject *parent = 0);
 
         // Infoscreen interface
+        QWebView* view();
         void start();
+
+        // UI slots
+    private slots:
+        void onLoadStarted();
+        void onLoadProgress(int progress);
+        void onLoadFinished(bool ok);
+
+        // Data members
+    private:
+        QWebView* mWebView;
     };
 }
 #endif // BROWSER_H

@@ -26,37 +26,10 @@ UserInterface::UserInterface(QWidget *parent) throw(QException) : QMainWindow(pa
 
     // Setup UI
     mBrowser = new Browser(this);
-    connect(mBrowser, SIGNAL(loadStarted()), this, SLOT(onLoadStarted()));
-    connect(mBrowser, SIGNAL(loadProgress(int)), this, SLOT(onLoadProgress(int)));
-    connect(mBrowser, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
-    setCentralWidget(mBrowser);
+    setCentralWidget(mBrowser->view());
     showMaximized();
 
     // Load web page
     qDebug() << "Showing page";
     mBrowser->start();
-}
-
-
-//
-// UI slots
-//
-
-
-void UserInterface::onLoadStarted()
-{
-    qDebug() << "Started loading";
-}
-
-void UserInterface::onLoadProgress(int progress)
-{
-    qDebug() << "Load in progress:" << progress;
-}
-
-void UserInterface::onLoadFinished(bool ok)
-{
-    if (ok)
-        qDebug() << "Loading finished";
-    else
-        qWarning() << "Loading failed";
 }
