@@ -5,9 +5,11 @@ TARGET = infoscreen
 SOURCES += \
     main.cpp \
     mainapplication.cpp \
-    userinterface.cpp
+    userinterface.cpp \
+    browser.cpp
 
 HEADERS += \
     mainapplication.h \
     userinterface.h \
-    qexception.h
+    qexception.h \
+    browser.h

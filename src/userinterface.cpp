@@ -25,12 +25,38 @@ UserInterface::UserInterface(QWidget *parent) throw(QException) : QMainWindow(pa
     mSettings->beginGroup("UserInterface");
 
     // Setup UI
-    mWebView = new QWebView(this);
-    setCentralWidget(mWebView);
+    mBrowser = new Browser(this);
+    connect(mBrowser, SIGNAL(loadStarted()), this, SLOT(onLoadStarted()));
+    connect(mBrowser, SIGNAL(loadProgress(int)), this, SLOT(onLoadProgress(int)));
+    connect(mBrowser, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
+    setCentralWidget(mBrowser);
     showMaximized();
 
-    // Load debug page
+    // Load web page
     qDebug() << "Showing page";
-    mWebView->setPage(new QWebPage());
-    mWebView->load(QUrl("http://infoscreen.flatturtle.com/"));
+    mBrowser->start();
+}
+
+
+//
+// UI slots
+//
+
+
+void UserInterface::onLoadStarted()
+{
+    qDebug() << "Started loading";
+}
+
+void UserInterface::onLoadProgress(int progress)
+{
+    qDebug() << "Load in progress:" << progress;
+}
+
+void UserInterface::onLoadFinished(bool ok)
+{
+    if (ok)
+        qDebug() << "Loading finished";
+    else
+        qWarning() << "Loading failed";
 }

@@ -14,6 +14,7 @@
 
 // Local includes
 #include "qexception.h"
+#include "browser.h"
 
 namespace iRail
 {
@@ -24,14 +25,16 @@ namespace iRail
         // Construction and destruction
         UserInterface(QWidget *parent = 0) throw(QException);
 
-        // Messaging methods
-        void showNotice(const QString& iMessage) const;
-        void showAlert(const QString& iMessage) const;
+        // UI slots
+    private slots:
+        void onLoadStarted();
+        void onLoadProgress(int progress);
+        void onLoadFinished(bool ok);
 
     private:
         // Member objects
         QSettings *mSettings;
-        QWebView *mWebView;
+        Browser *mBrowser;
     };
 }
 
