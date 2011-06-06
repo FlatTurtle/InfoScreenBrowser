@@ -44,7 +44,7 @@ QWebView* Browser::view()
 void Browser::start()
 {
     mWebView->setPage((QWebPage*) new WebPage());
-    mWebView->load(QUrl("http://infoscreen.flatturtle.com/"));
+    mWebView->load(QUrl("http://s.flatturtle.com/"));
 }
 
 
