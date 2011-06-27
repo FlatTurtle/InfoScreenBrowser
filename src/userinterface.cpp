@@ -20,6 +20,8 @@ using namespace iRail;
 
 UserInterface::UserInterface(QWidget *parent) throw(QException) : QMainWindow(parent)
 {
+    qDebug() << Q_FUNC_INFO;
+
     // Load settings
     mSettings = new QSettings(this);
     mSettings->beginGroup("UserInterface");

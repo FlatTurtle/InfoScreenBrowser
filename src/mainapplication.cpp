@@ -30,6 +30,8 @@ int MainApplication::sigtermFd[2];
 
 MainApplication::MainApplication(int& argc, char** argv) throw(QException) : QApplication(argc, argv)
 {
+    qDebug() << Q_FUNC_INFO;
+
     // Singleton assertion (well, some singleton-hybrid, to be fair)
     Q_ASSERT(mInstance == NULL);
     mInstance = this;
@@ -70,6 +72,8 @@ MainApplication::MainApplication(int& argc, char** argv) throw(QException) : QAp
 
 MainApplication::~MainApplication()
 {
+    qDebug() << Q_FUNC_INFO;
+
     // Remove the singleton configuration
     mInstance = NULL;
 }
@@ -101,6 +105,8 @@ void MainApplication::fatal()
 
 MainApplication *MainApplication::instance()
 {
+    qDebug() << Q_FUNC_INFO;
+
     return mInstance;
 }
 
@@ -111,6 +117,8 @@ MainApplication *MainApplication::instance()
 
 UserInterface* MainApplication::userInterface() const
 {
+    qDebug() << Q_FUNC_INFO;
+
     return mUserInterface;
 }
 
@@ -144,6 +152,8 @@ void MainApplication::quitGracefully()
 
 void MainApplication::handleInterruptUnix(int)
 {
+    qDebug() << Q_FUNC_INFO;
+
     // Write to the SIGINT-socket
     char a = '1';
     ::write(sigintFd[0], &a, sizeof(a));
@@ -152,6 +162,8 @@ void MainApplication::handleInterruptUnix(int)
 
 void MainApplication::handleTerminateUnix(int)
 {
+    qDebug() << Q_FUNC_INFO;
+
     // Write to the SIGTERM-socket
     char a = '2';
     ::write(sigtermFd[0], &a, sizeof(a));
