@@ -38,7 +38,7 @@ More information can be found on [Project iRail](http://project.irail.be/).
 License
 -------
 
-AGPLv3
+GPLv3
 
 (c) 2011 iRail vzw/asbl
 
