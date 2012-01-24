@@ -87,7 +87,7 @@ void Browser::onLoadFinished(bool ok)
 QString WebPage::userAgentForUrl(const QUrl &iUrl) const
 {
     qDebug() << Q_FUNC_INFO;
-    return QString("irail-infoscreen");
+    return QString("FlatTurtle 1.0 - Qt");
 }
 
 void WebPage::javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId)
