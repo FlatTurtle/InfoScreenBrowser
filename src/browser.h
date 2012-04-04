@@ -10,18 +10,18 @@
 #include <QtWebKit/QWebView>
 #include <QtWebKit/QWebPage>
 
-namespace iRail
+namespace FlatTurtle
 {
     class WebPage : public QWebPage
     {
     Q_OBJECT
     public:
         // Construction and destruction
-        WebPage(QWidget *parent = 0);
+        WebPage(QWidget *iParent = 0);
 
         // WebPage interface
         QString userAgentForUrl(const QUrl &iUrl) const;
-        void javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId);
+        void javaScriptConsoleMessage(const QString &iMessage, int iLineNumber, const QString &iSourceId);
     };
 
     class Browser : public QObject
@@ -29,10 +29,10 @@ namespace iRail
     Q_OBJECT
     public:
         // Construction and destruction
-        Browser(QObject *parent = 0);
+        Browser(QObject *iParent = 0);
 
         // Infoscreen interface
-        QWebView* view();
+        QWebView *view();
         void start();
 
         // UI slots
@@ -43,7 +43,7 @@ namespace iRail
 
         // Data members
     private:
-        QWebView* mWebView;
+        QWebView *mWebView;
     };
 }
 #endif // BROWSER_H

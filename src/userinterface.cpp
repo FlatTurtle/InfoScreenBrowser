@@ -10,21 +10,16 @@
 #include <QtCore/QStringList>
 #include <QtCore/QDebug>
 
-// Namespaces
-using namespace iRail;
-
 
 //
 // Construction and destruction
 //
 
-UserInterface::UserInterface(QWidget *parent) throw(QException) : QMainWindow(parent)
-{
-    qDebug() << Q_FUNC_INFO;
-
+FlatTurtle::UserInterface::UserInterface(QWidget *iParent) throw(QException)
+    : QMainWindow(iParent) {
     // Load settings
     mSettings = new QSettings(this);
-    mSettings->beginGroup("UserInterface");
+    mSettings->beginGroup(metaObject()->className());
 
     // Setup UI
     mBrowser = new Browser(this);

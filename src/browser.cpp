@@ -7,19 +7,15 @@
 
 // Library includes
 #include <QtCore/QDebug>
-
-// Namespaces
-using namespace iRail;
+#include <QtNetwork/QHostInfo>
 
 
 //
 // Construction and destruction
 //
 
-Browser::Browser(QObject* parent) : QObject(parent)
-{
-    qDebug() << Q_FUNC_INFO;
-
+FlatTurtle::Browser::Browser(QObject *iParent)
+    : QObject(iParent) {
     mWebView = new QWebView();
 
     connect(mWebView, SIGNAL(loadStarted()), this, SLOT(onLoadStarted()));
@@ -27,9 +23,8 @@ Browser::Browser(QObject* parent) : QObject(parent)
     connect(mWebView, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
 }
 
-WebPage::WebPage(QWidget *parent) : QWebPage(parent)
-{
-    qDebug() << Q_FUNC_INFO;
+FlatTurtle::WebPage::WebPage(QWidget *iParent)
+    : QWebPage(iParent) {
 }
 
 
@@ -38,19 +33,15 @@ WebPage::WebPage(QWidget *parent) : QWebPage(parent)
 //
 
 // TODO: remove this and embed the QWebView in a QWidget (didn't seem to expand properly)
-QWebView* Browser::view()
-{
-
-    qDebug() << Q_FUNC_INFO;
+QWebView *FlatTurtle::Browser::view() {
     return mWebView;
 }
 
-void Browser::start()
-{
-    qDebug() << Q_FUNC_INFO;
-
+void FlatTurtle::Browser::start() {
     mWebView->setPage((QWebPage*) new WebPage());
-    mWebView->load(QUrl("http://s.flatturtle.com/"));
+
+    QHostInfo tInfo;
+    mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
 }
 
 
@@ -58,21 +49,15 @@ void Browser::start()
 // UI slots
 //
 
-void Browser::onLoadStarted()
-{
-    qDebug() << Q_FUNC_INFO;
+void FlatTurtle::Browser::onLoadStarted() {
     qDebug() << "Started loading";
 }
 
-void Browser::onLoadProgress(int progress)
-{
-    qDebug() << Q_FUNC_INFO;
+void FlatTurtle::Browser::onLoadProgress(int progress) {
     qDebug() << "Load in progress:" << progress;
 }
 
-void Browser::onLoadFinished(bool ok)
-{
-    qDebug() << Q_FUNC_INFO;
+void FlatTurtle::Browser::onLoadFinished(bool ok) {
     if (ok)
         qDebug() << "Loading finished";
     else
@@ -84,14 +69,10 @@ void Browser::onLoadFinished(bool ok)
 // WebPage interface
 //
 
-QString WebPage::userAgentForUrl(const QUrl &iUrl) const
-{
-    qDebug() << Q_FUNC_INFO;
+QString FlatTurtle::WebPage::userAgentForUrl(const QUrl &iUrl) const {
     return QString("FlatTurtle 1.0 - Qt");
 }
 
-void WebPage::javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId)
-{
-    qDebug() << Q_FUNC_INFO;
+void FlatTurtle::WebPage::javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId) {
     qDebug() << "Javascript console message at line " << iLineNumber << " of " << iSourceId << ": " << iMessage;
 }

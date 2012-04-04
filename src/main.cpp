@@ -1,83 +1,39 @@
+/**
+ * Copyright (C) 2011-2012 Tim Besard <tim.besard@gmail.com>
+ *
+ * All rights reserved.
+ */
+
 //
 // Configuration
 //
 
 // System includes
-#include <signal.h>
-#include <unistd.h>
+#include <csignal>
 
 // Local includes
 #include "mainapplication.h"
-#include "qexception.h"
 
-// Library includes
-#include <QtCore/QTextStream>
+struct ExitHandler {
+    ExitHandler() {
+        signal(SIGINT, &ExitHandler::exit);
+        signal(SIGTERM, &ExitHandler::exit);
+    }
 
-// Namespaces
-using namespace iRail;
+    static void exit(int iExitCode) {
+        // Calling exit in the QApplication will cause the aboutToQuit
+        // signal to be emitted, allowing us to clean up properly from
+        // within a Qt event thread (since this isn't, hence we cannot
+        // call Qt functions from here).
+        FlatTurtle::MainApplication::exit(iExitCode);
+    }
+};
 
-static int initSignalHandlers()
-{
-    // Set-up and register the SIGINT handler
-    struct sigaction sigint;
-    sigint.sa_handler = MainApplication::handleInterruptUnix;
-    sigemptyset(&sigint.sa_mask);
-    sigint.sa_flags = 0;
-    sigint.sa_flags |= SA_RESTART;
-    if (sigaction(SIGINT, &sigint, 0) > 0)
-        return 1;
-
-    // Set-up and register the SIGTERM handler
-    struct sigaction sigterm;
-    sigterm.sa_handler = MainApplication::handleTerminateUnix;
-    sigemptyset(&sigterm.sa_mask);
-    sigterm.sa_flags |= SA_RESTART;
-    if (sigaction(SIGTERM, &sigterm, 0) > 0)
-        return 2;
-
-    return 0;
-}
-
-int main(int argc, char *argv[])
-{
+int main(int iArgumentCount, char *iArgumentValues[]) {
     // Handle Unix signals
-    initSignalHandlers();
+    ExitHandler tExitHandler;
 
-    // Initialize the application
-    MainApplication* tApplication;
-    try
-    {
-        tApplication = new MainApplication(argc, argv);
-    }
-    catch (const QException& iException)
-    {
-        QTextStream qerr(stderr);
-
-        qerr << "--------------------------------------\n";
-        qerr << "        INITIALIZATION FAILURE        \n";
-        qerr << "--------------------------------------\n";
-        qerr << "\n";
-        qerr << "Exception details: " << iException.what() << "\n";
-
-        return 0;
-    }
-
-    // Run the application
-    try
-    {
-        tApplication->start();
-        return tApplication->exec();
-    }
-    catch (const QException& iException)
-    {
-         QTextStream qerr(stderr);
-
-         qerr << "---------------------------------------\n";
-         qerr << "          UNTRAPPED EXCEPTION          \n";
-         qerr << "---------------------------------------\n";
-         qerr << "\n";
-         qerr << "Exception details: " << iException.what() << "\n";
-
-         return 0;
-    }
+    // Run the applications
+    FlatTurtle::MainApplication *tApplication = new FlatTurtle::MainApplication(iArgumentCount, iArgumentValues);
+    return tApplication->exec();
 }

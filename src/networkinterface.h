@@ -3,8 +3,8 @@
 //
 
 // Include guard
-#ifndef USERINTERFACE_H
-#define USERINTERFACE_H
+#ifndef NETWORKINTERFACE_H
+#define NETWORKINTERFACE_H
 
 // Library includes
 #include <QtCore/QObject>
@@ -13,20 +13,18 @@
 
 // Local includes
 #include "qexception.h"
-#include "browser.h"
 
 namespace FlatTurtle {
-    class UserInterface : public QMainWindow {
+    class NetworkInterface : public QObject {
     Q_OBJECT
     public:
         // Construction and destruction
-        UserInterface(QWidget *iParent = 0) throw(QException);
+        NetworkInterface(QObject *parent = 0) throw(QException);
 
     private:
         // Member objects
         QSettings *mSettings;
-        Browser *mBrowser;
     };
 }
 
-#endif // USERINTERFACE_H
+#endif // NETWORKINTERFACE_H

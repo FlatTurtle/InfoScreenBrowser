@@ -12,13 +12,10 @@
 class QException
 {
 public:
-    QException(const QString& iMessage) throw() : mMessage(iMessage)
-    {
-
+    QException(const QString& iMessage) throw() : mMessage(iMessage) {
     }
 
-    const QString& what() const
-    {
+    const QString& what() const {
         return mMessage;
     }
 
