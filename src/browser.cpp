@@ -17,10 +17,6 @@
 FlatTurtle::Browser::Browser(QObject *iParent)
     : QObject(iParent) {
     mWebView = new QWebView();
-
-    connect(mWebView, SIGNAL(loadStarted()), this, SLOT(onLoadStarted()));
-    connect(mWebView, SIGNAL(loadProgress(int)), this, SLOT(onLoadProgress(int)));
-    connect(mWebView, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
 }
 
 FlatTurtle::WebPage::WebPage(QWidget *iParent)
@@ -42,26 +38,6 @@ void FlatTurtle::Browser::start() {
 
     QHostInfo tInfo;
     mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
-}
-
-
-//
-// UI slots
-//
-
-void FlatTurtle::Browser::onLoadStarted() {
-    qDebug() << "Started loading";
-}
-
-void FlatTurtle::Browser::onLoadProgress(int progress) {
-    qDebug() << "Load in progress:" << progress;
-}
-
-void FlatTurtle::Browser::onLoadFinished(bool ok) {
-    if (ok)
-        qDebug() << "Loading finished";
-    else
-        qWarning() << "Loading failed";
 }
 
 

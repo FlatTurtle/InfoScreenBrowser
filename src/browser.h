@@ -35,12 +35,6 @@ namespace FlatTurtle
         QWebView *view();
         void start();
 
-        // UI slots
-    private slots:
-        void onLoadStarted();
-        void onLoadProgress(int progress);
-        void onLoadFinished(bool ok);
-
         // Data members
     private:
         QWebView *mWebView;
