@@ -8,6 +8,7 @@
 // Library includes
 #include <QtCore/QDebug>
 #include <QtNetwork/QHostInfo>
+#include <QtWebKit/QWebFrame>
 
 
 //
@@ -36,8 +37,17 @@ QWebView *FlatTurtle::Browser::view() {
 void FlatTurtle::Browser::start() {
     mWebView->setPage((QWebPage*) new WebPage());
 
+#ifdef DEVEL
+    qWarning() << "Using development browser endpoint";
+    mWebView->load(QUrl("http://go.flatturtle.com/development"));
+#else
     QHostInfo tInfo;
     mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
+#endif
+}
+
+void FlatTurtle::Browser::execute(const QString& iCode) {
+    mWebView->page()->mainFrame()->evaluateJavaScript(iCode);
 }
 
 

@@ -27,6 +27,14 @@ FlatTurtle::UserInterface::UserInterface(QWidget *iParent) throw(QException)
     showMaximized();
 
     // Load web page
-    qDebug() << "Showing page";
     mBrowser->start();
+}
+
+
+//
+// Functionality
+//
+
+void FlatTurtle::UserInterface::execute(const QString& iCode) {
+    mBrowser->execute(iCode);
 }

@@ -1,10 +1,12 @@
-QT += core gui network webkit
+QT += core gui network webkit xml
 
 TARGET = infoscreen
 
 # qxmpp
 CONFIG += link_pkgconfig
 PKGCONFIG += qxmpp
+
+DEFINES+=DEVEL
 
 SOURCES += \
     main.cpp \

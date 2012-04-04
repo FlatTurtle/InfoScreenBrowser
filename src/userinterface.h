@@ -22,6 +22,9 @@ namespace FlatTurtle {
         // Construction and destruction
         UserInterface(QWidget *iParent = 0) throw(QException);
 
+        // Functionality
+        void execute(const QString& iCode);
+
     private:
         // Member objects
         QSettings *mSettings;

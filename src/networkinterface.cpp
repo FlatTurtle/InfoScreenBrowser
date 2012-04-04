@@ -9,6 +9,9 @@
 // Library includes
 #include <QtCore/QStringList>
 #include <QtCore/QDebug>
+#include <QtNetwork/QHostInfo>
+#include <qxmpp/QXmppConfiguration.h>
+#include <qxmpp/QXmppRosterManager.h>
 
 
 //
@@ -16,8 +19,38 @@
 //
 
 FlatTurtle::NetworkInterface::NetworkInterface(QObject *iParent) throw(QException)
-    : QObject(iParent) {
+    : QXmppClient(iParent) {
     // Load settings
     mSettings = new QSettings(this);
     mSettings->beginGroup(metaObject()->className());
+
+    // Connect slots
+    connect(this, SIGNAL(messageReceived(const QXmppMessage&)), SLOT(messageReceived(const QXmppMessage&)));
+
+    // Construct the configuration parameters
+    QXmppConfiguration tConfiguration;
+    tConfiguration.setHost("botmaster.corp.flatturtle.com");
+#ifdef DEVEL
+    qWarning() << "Using development XMPP credentials";
+    tConfiguration.setResource("botnet.corp.flatturtle.com");
+    tConfiguration.setJid("testclient@botnet.corp.flatturtle.com");
+#else
+    QHostInfo tHostInfo;
+    tConfiguration.setResource(tHostInfo.localDomainName());
+    tConfiguration.setJid(tHostInfo.localHostName() + "@" + tHostInfo.localDomainName());
+#endif
+    tConfiguration.setAutoAcceptSubscriptions(true);
+    tConfiguration.setAutoReconnectionEnabled(true);
+
+    // Connect
+    connectToServer(tConfiguration);
+}
+
+
+//
+// XMPP events
+//
+
+void FlatTurtle::NetworkInterface::messageReceived(const QXmppMessage& iMessage) {
+    MainApplication::instance()->userInterface()->execute(iMessage.body());
 }
