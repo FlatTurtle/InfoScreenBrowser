@@ -18,6 +18,15 @@
 FlatTurtle::Browser::Browser(QObject *iParent)
     : QObject(iParent) {
     mWebView = new QWebView();
+    mWebView->setPage((QWebPage*) new WebPage());
+
+#ifdef DEVEL
+    qWarning() << "WARNING: using development infoscreen";
+    mWebView->load(QUrl("http://go.flatturtle.com/development"));
+#else
+    QHostInfo tInfo;
+    mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
+#endif
 }
 
 FlatTurtle::WebPage::WebPage(QWidget *iParent)
@@ -32,18 +41,6 @@ FlatTurtle::WebPage::WebPage(QWidget *iParent)
 // TODO: remove this and embed the QWebView in a QWidget (didn't seem to expand properly)
 QWebView *FlatTurtle::Browser::view() {
     return mWebView;
-}
-
-void FlatTurtle::Browser::start() {
-    mWebView->setPage((QWebPage*) new WebPage());
-
-#ifdef DEVEL
-    qWarning() << "Using development browser endpoint";
-    mWebView->load(QUrl("http://go.flatturtle.com/development"));
-#else
-    QHostInfo tInfo;
-    mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
-#endif
 }
 
 void FlatTurtle::Browser::execute(const QString& iCode) {

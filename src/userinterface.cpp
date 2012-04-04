@@ -25,9 +25,6 @@ FlatTurtle::UserInterface::UserInterface(QWidget *iParent) throw(QException)
     mBrowser = new Browser(this);
     setCentralWidget(mBrowser->view());
     showMaximized();
-
-    // Load web page
-    mBrowser->start();
 }
 
 

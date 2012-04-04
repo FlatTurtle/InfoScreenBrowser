@@ -33,7 +33,6 @@ namespace FlatTurtle
 
         // Infoscreen interface
         QWebView *view();
-        void start();
         void execute(const QString& iCode);
 
         // Data members

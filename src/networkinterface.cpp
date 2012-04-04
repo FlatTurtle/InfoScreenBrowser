@@ -31,7 +31,7 @@ FlatTurtle::NetworkInterface::NetworkInterface(QObject *iParent) throw(QExceptio
     QXmppConfiguration tConfiguration;
     tConfiguration.setHost("botmaster.corp.flatturtle.com");
 #ifdef DEVEL
-    qWarning() << "Using development XMPP credentials";
+    qWarning() << "WARNING: using development XMPP configuration";
     tConfiguration.setResource("botnet.corp.flatturtle.com");
     tConfiguration.setJid("testclient@botnet.corp.flatturtle.com");
 #else
