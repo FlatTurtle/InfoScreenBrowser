@@ -43,8 +43,8 @@ QWebView *FlatTurtle::Browser::view() {
     return mWebView;
 }
 
-void FlatTurtle::Browser::execute(const QString& iCode) {
-    mWebView->page()->mainFrame()->evaluateJavaScript(iCode);
+QVariant FlatTurtle::Browser::execute(const QString& iCode) {
+    return mWebView->page()->mainFrame()->evaluateJavaScript(iCode);
 }
 
 

@@ -32,6 +32,6 @@ FlatTurtle::UserInterface::UserInterface(QWidget *iParent) throw(QException)
 // Functionality
 //
 
-void FlatTurtle::UserInterface::execute(const QString& iCode) {
-    mBrowser->execute(iCode);
+QVariant FlatTurtle::UserInterface::execute(const QString& iCode) {
+    return mBrowser->execute(iCode);
 }

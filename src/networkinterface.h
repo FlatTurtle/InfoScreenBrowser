@@ -26,11 +26,14 @@ namespace FlatTurtle {
         // XMPP events
     private slots:
         void messageReceived(const QXmppMessage& iMessage);
+        void disconnected();
 
     private:
         // Member objects
         QSettings *mSettings;
     };
 }
+
+
 
 #endif // NETWORKINTERFACE_H

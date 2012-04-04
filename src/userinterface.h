@@ -23,7 +23,7 @@ namespace FlatTurtle {
         UserInterface(QWidget *iParent = 0) throw(QException);
 
         // Functionality
-        void execute(const QString& iCode);
+        QVariant execute(const QString& iCode);
 
     private:
         // Member objects

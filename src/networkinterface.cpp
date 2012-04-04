@@ -9,6 +9,7 @@
 // Library includes
 #include <QtCore/QStringList>
 #include <QtCore/QDebug>
+#include <QtCore/QTimer>
 #include <QtNetwork/QHostInfo>
 #include <qxmpp/QXmppConfiguration.h>
 #include <qxmpp/QXmppRosterManager.h>
@@ -26,6 +27,7 @@ FlatTurtle::NetworkInterface::NetworkInterface(QObject *iParent) throw(QExceptio
 
     // Connect slots
     connect(this, SIGNAL(messageReceived(const QXmppMessage&)), SLOT(messageReceived(const QXmppMessage&)));
+    connect(this, SIGNAL(disconnected()), SLOT(disconnected()));
 
     // Construct the configuration parameters
     QXmppConfiguration tConfiguration;
@@ -52,5 +54,15 @@ FlatTurtle::NetworkInterface::NetworkInterface(QObject *iParent) throw(QExceptio
 //
 
 void FlatTurtle::NetworkInterface::messageReceived(const QXmppMessage& iMessage) {
-    MainApplication::instance()->userInterface()->execute(iMessage.body());
+    qDebug() << "Received command from" << iMessage.from() << ":" << iMessage.body();
+    QVariant tOutput = MainApplication::instance()->userInterface()->execute(iMessage.body());
+    sendMessage(iMessage.from(), tOutput.toString());
+}
+
+void FlatTurtle::NetworkInterface::disconnected() {
+    if (!isConnected()) {
+        qWarning() << "WARNING: attempting to reconnect";
+        connectToServer(configuration(), clientPresence());
+        QTimer::singleShot(mSettings->value("reconnection/interval", 60000).toInt(), this, SLOT(disconnected()));
+    }
 }
