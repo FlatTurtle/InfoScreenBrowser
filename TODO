@@ -1,0 +1,6 @@
+XMPP
+----
+
+Improve security (ship botmaster certificate, passwords, ...)
+
+Reconnection through QXmppReconnectionManager

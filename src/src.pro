@@ -1,12 +1,10 @@
 QT += core gui network webkit xml
 
-TARGET = infoscreen
+TARGET = infoscreenbrowser
 
 # qxmpp
 CONFIG += link_pkgconfig
 PKGCONFIG += qxmpp
-
-DEFINES+=DEVEL
 
 SOURCES += \
     main.cpp \
@@ -21,3 +19,13 @@ HEADERS += \
     qexception.h \
     browser.h \
     networkinterface.h
+
+unix {
+    isEmpty(PREFIX) {
+      PREFIX = /usr
+    }
+    BINDIR = $$PREFIX/bin
+    DATADIR =$$PREFIX/share
+    INSTALLS += target
+    target.path = $$BINDIR
+}
