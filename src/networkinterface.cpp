@@ -31,15 +31,16 @@ FlatTurtle::NetworkInterface::NetworkInterface(QObject *iParent) throw(QExceptio
 
     // Construct the configuration parameters
     QXmppConfiguration tConfiguration;
-    tConfiguration.setHost("botmaster.corp.flatturtle.com");
+    tConfiguration.setHost("xmpp.corp.flatturtle.com");
 #ifdef DEVEL
     qWarning() << "WARNING: using development XMPP configuration";
     tConfiguration.setResource("botnet.corp.flatturtle.com");
     tConfiguration.setJid("testclient@botnet.corp.flatturtle.com");
 #else
     QHostInfo tHostInfo;
-    tConfiguration.setResource(tHostInfo.localDomainName());
-    tConfiguration.setJid(tHostInfo.localHostName() + "@" + tHostInfo.localDomainName());
+    tConfiguration.setResource("botnet.corp.flatturtle.com");
+    tConfiguration.setJid(tHostInfo.localHostName() + "@botnet.corp.flatturtle.com");
+    qDebug() << "DEBUG: connecting with JIT" << tHostInfo.localHostName() + "@botnet.corp.flatturtle.com";
 #endif
     tConfiguration.setAutoAcceptSubscriptions(true);
     tConfiguration.setAutoReconnectionEnabled(true);
@@ -63,6 +64,7 @@ void FlatTurtle::NetworkInterface::disconnected() {
     if (!isConnected()) {
         qWarning() << "WARNING: attempting to reconnect";
         connectToServer(configuration(), clientPresence());
-        QTimer::singleShot(mSettings->value("reconnection/interval", 60000).toInt(), this, SLOT(disconnected()));
+        QTimer::singleShot(5000, this, SLOT(disconnected()));
+        // TODO: QSettings mSettings->value("reconnection/interval", 60000).toInt()
     }
 }
