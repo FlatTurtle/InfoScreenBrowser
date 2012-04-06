@@ -26,6 +26,9 @@ namespace FlatTurtle
         // Application interface
     public slots:
         QString system(const QString& iCommand);
+
+    private:
+        QString mUserAgent;
     };
 
     class Browser : public QObject

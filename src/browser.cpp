@@ -2,7 +2,7 @@
 // Configuration
 //
 
-// Local includes
+// Header includes
 #include "browser.h"
 
 // Library includes
@@ -10,6 +10,9 @@
 #include <QtNetwork/QHostInfo>
 #include <QtWebKit/QWebFrame>
 #include <QtCore/QProcess>
+
+// Local includes
+#include "mainapplication.h"
 
 
 //
@@ -32,7 +35,10 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 
 FlatTurtle::WebPage::WebPage(QWidget *iParent)
     : QWebPage(iParent) {
+    // Make the application interface available to Javascript code
     mainFrame()->addToJavaScriptWindowObject("application", this);
+
+    mUserAgent = "InfoScreenBrowser/" + MainApplication::instance()->applicationVersion() + " QtWebKit/" + QTWEBKIT_VERSION_STR;
 }
 
 
@@ -55,7 +61,7 @@ QVariant FlatTurtle::Browser::execute(const QString& iCode) {
 //
 
 QString FlatTurtle::WebPage::userAgentForUrl(const QUrl &iUrl) const {
-    return QString("FlatTurtle 1.0 - Qt");
+    return mUserAgent;
 }
 
 void FlatTurtle::WebPage::javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId) {
