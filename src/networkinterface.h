@@ -27,6 +27,7 @@ namespace FlatTurtle {
     private slots:
         void messageReceived(const QXmppMessage& iMessage);
         void disconnected();
+        void connected();
 
     private:
         // Member objects

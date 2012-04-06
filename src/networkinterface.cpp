@@ -28,6 +28,7 @@ FlatTurtle::NetworkInterface::NetworkInterface(QObject *iParent) throw(QExceptio
     // Connect slots
     connect(this, SIGNAL(messageReceived(const QXmppMessage&)), SLOT(messageReceived(const QXmppMessage&)));
     connect(this, SIGNAL(disconnected()), SLOT(disconnected()));
+    connect(this, SIGNAL(connected()), SLOT(connected()));
 
     // Construct the configuration parameters
     QXmppConfiguration tConfiguration;
@@ -67,4 +68,12 @@ void FlatTurtle::NetworkInterface::disconnected() {
         QTimer::singleShot(5000, this, SLOT(disconnected()));
         // TODO: QSettings mSettings->value("reconnection/interval", 60000).toInt()
     }
+}
+
+void FlatTurtle::NetworkInterface::connected() {
+    // Subscribe to the admin
+    // TODO: use subscribe() in qxmpp 4.0
+    QXmppPresence tPresence(QXmppPresence::Subscribe);
+    tPresence.setTo("admin@botnet.corp.flatturtle.com");
+    sendPacket(tPresence);
 }

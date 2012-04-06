@@ -10,8 +10,9 @@ Requirements
 
 - Qt >= 4.6
 - A FlatTurtle InfoScreen server
-- The DataTank (optional)
 - An XMPP server (optional)
+- libqxmpp >= 3.0
+- The DataTank (optional)
 
 Installation
 ------------
