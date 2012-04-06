@@ -9,6 +9,7 @@
 #include <QtCore/QDebug>
 #include <QtNetwork/QHostInfo>
 #include <QtWebKit/QWebFrame>
+#include <QtCore/QProcess>
 
 
 //
@@ -31,6 +32,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 
 FlatTurtle::WebPage::WebPage(QWidget *iParent)
     : QWebPage(iParent) {
+    mainFrame()->addToJavaScriptWindowObject("application", this);
 }
 
 
@@ -58,4 +60,21 @@ QString FlatTurtle::WebPage::userAgentForUrl(const QUrl &iUrl) const {
 
 void FlatTurtle::WebPage::javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId) {
     qDebug() << "Javascript console message at line " << iLineNumber << " of " << iSourceId << ": " << iMessage;
+}
+
+
+//
+// Application interface
+//
+
+QString FlatTurtle::WebPage::system(const QString& iCommand) {
+    // TODO: return the return code, but how to send the stdout/stderr back?
+    qDebug() << "DEBUG: executing system command" << iCommand;
+    QProcess tScript(this);
+    tScript.setProcessChannelMode(QProcess::MergedChannels);
+    tScript.start(iCommand);
+    if (tScript.waitForFinished())
+        return tScript.readAll();
+    else
+        return tScript.errorString();
 }

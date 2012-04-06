@@ -22,6 +22,10 @@ namespace FlatTurtle
         // WebPage interface
         QString userAgentForUrl(const QUrl &iUrl) const;
         void javaScriptConsoleMessage(const QString &iMessage, int iLineNumber, const QString &iSourceId);
+
+        // Application interface
+    public slots:
+        QString system(const QString& iCommand);
     };
 
     class Browser : public QObject
