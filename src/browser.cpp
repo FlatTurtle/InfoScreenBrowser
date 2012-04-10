@@ -68,19 +68,44 @@ void FlatTurtle::WebPage::javaScriptConsoleMessage(const QString& iMessage, int 
     qDebug() << "Javascript console message at line " << iLineNumber << " of " << iSourceId << ": " << iMessage;
 }
 
+bool FlatTurtle::WebPage::shouldInterruptJavaScript() {
+    return false;
+}
+
 
 //
 // Application interface
 //
 
-QString FlatTurtle::WebPage::system(const QString& iCommand) {
-    // TODO: return the return code, but how to send the stdout/stderr back?
+bool FlatTurtle::WebPage::reboot() {
+    QString tOutput;
+    QStringList tArguments;
+    tArguments << "/sbin/reboot";
+    return sudo(tArguments, tOutput);
+}
+
+
+//
+// Auxiliary
+//
+
+bool FlatTurtle::WebPage::system(const QString& iCommand, const QStringList& iArguments, QString& oOutput) {
+    // Set-up the process
     qDebug() << "DEBUG: executing system command" << iCommand;
-    QProcess tScript(this);
-    tScript.setProcessChannelMode(QProcess::MergedChannels);
-    tScript.start(iCommand);
-    if (tScript.waitForFinished())
-        return tScript.readAll();
-    else
-        return tScript.errorString();
+    QProcess tProcess(this);
+    tProcess.setProcessChannelMode(QProcess::MergedChannels);
+    tProcess.start(iCommand, iArguments);
+
+    // Wait for the end of the command
+    QEventLoop tLoop;
+    connect(&tProcess, SIGNAL(finished(int, QProcess::ExitStatus)), &tLoop, SLOT(quit()));
+    tLoop.exec();
+
+    // Return appropriate data
+    oOutput = tProcess.readAll();
+    return (tProcess.exitStatus() == QProcess::NormalExit);
+}
+
+bool FlatTurtle::WebPage::sudo(const QStringList& iArguments, QString& oOutput) {
+    return system("/usr/bin/sudo", iArguments, oOutput);
 }

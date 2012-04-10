@@ -7,6 +7,7 @@
 #define BROWSER_H
 
 // Library includes
+#include <QtCore/QStringList>
 #include <QtWebKit/QWebView>
 #include <QtWebKit/QWebPage>
 
@@ -22,12 +23,19 @@ namespace FlatTurtle
         // WebPage interface
         QString userAgentForUrl(const QUrl &iUrl) const;
         void javaScriptConsoleMessage(const QString &iMessage, int iLineNumber, const QString &iSourceId);
+    public slots:
+        bool shouldInterruptJavaScript();
 
         // Application interface
     public slots:
-        QString system(const QString& iCommand);
+        bool reboot();
 
     private:
+        // Auxiliary
+        bool system(const QString& iCommand, const QStringList& iArguments, QString& oOutput);
+        bool sudo(const QStringList& iArguments, QString& oOutput);
+
+        // Member data
         QString mUserAgent;
     };
 
