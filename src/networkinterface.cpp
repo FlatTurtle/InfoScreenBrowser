@@ -62,17 +62,17 @@ void FlatTurtle::NetworkInterface::messageReceived(const QXmppMessage& iMessage)
 }
 
 void FlatTurtle::NetworkInterface::disconnected() {
-    if (!isConnected()) {
-        qWarning() << "WARNING: attempting to reconnect";
-        connectToServer(configuration(), clientPresence());
-        QTimer::singleShot(5000, this, SLOT(disconnected()));
-        // TODO: QSettings mSettings->value("reconnection/interval", 60000).toInt()
-    }
+    qWarning() << "WARNING: attempting to reconnect";
+    // FIXME: this is necessary becuase the ReconnectionManager doesn't reconnect
+    //        if the client got forcibly disconnected
+    connectToServer(configuration(), clientPresence());
+    // FIXME: no reconnection timer necessary? Handled by ReconnectionManager?
 }
 
 void FlatTurtle::NetworkInterface::connected() {
     // Subscribe to the admin
     // TODO: use subscribe() in qxmpp 4.0
+    qDebug() << "DEBUG: connected";
     QXmppPresence tPresence(QXmppPresence::Subscribe);
     tPresence.setTo("admin@botnet.corp.flatturtle.com");
     sendPacket(tPresence);
