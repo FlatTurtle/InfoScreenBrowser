@@ -29,6 +29,7 @@ namespace FlatTurtle
         // Application interface
     public slots:
         bool reboot();
+        bool puppetUpdate();
 
     private:
         // Auxiliary
