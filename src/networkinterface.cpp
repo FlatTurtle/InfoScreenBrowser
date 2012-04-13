@@ -58,7 +58,7 @@ FlatTurtle::NetworkInterface::NetworkInterface(QObject *iParent) throw(QExceptio
 void FlatTurtle::NetworkInterface::messageReceived(const QXmppMessage& iMessage) {
     qDebug() << "Received command from" << iMessage.from() << ":" << iMessage.body();
     QVariant tOutput = MainApplication::instance()->userInterface()->execute(iMessage.body());
-    sendMessage(iMessage.from(), tOutput.toString());
+    sendMessage(iMessage.from(), mJsonSerializer.serialize(tOutput));
 }
 
 void FlatTurtle::NetworkInterface::disconnected() {

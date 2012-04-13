@@ -6,6 +6,9 @@ TARGET = infoscreenbrowser
 CONFIG += link_pkgconfig
 PKGCONFIG += qxmpp
 
+# QJson
+PKGCONFIG += QJson
+
 SOURCES += \
     main.cpp \
     mainapplication.cpp \

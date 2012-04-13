@@ -12,6 +12,7 @@
 #include <QtGui/QMainWindow>
 #include <qxmpp/QXmppClient.h>
 #include <qxmpp/QXmppMessage.h>
+#include <qjson/serializer.h>
 
 // Local includes
 #include "qexception.h"
@@ -32,6 +33,7 @@ namespace FlatTurtle {
     private:
         // Member objects
         QSettings *mSettings;
+        QJson::Serializer mJsonSerializer;
     };
 }
 
