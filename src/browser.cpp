@@ -87,7 +87,7 @@ bool FlatTurtle::WebPage::reboot() {
 bool FlatTurtle::WebPage::puppetUpdate() {
     QString tOutput;
     QStringList tArguments;
-    tArguments << "/usr/sbin/puppetd", "--onetime", "--logdest", "syslog";
+    tArguments << "/usr/sbin/puppetd" << "--onetime" << "--logdest" << "syslog";
     return sudo(tArguments, tOutput);
 }
 
