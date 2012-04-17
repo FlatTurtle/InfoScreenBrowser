@@ -91,6 +91,13 @@ bool FlatTurtle::WebPage::puppetUpdate() {
     return sudo(tArguments, tOutput);
 }
 
+bool FlatTurtle::WebPage::enableScreen(bool iEnabled) {
+    QString tOutput;
+    QStringList tArguments;
+    tArguments << "dpms" << "force" << (iEnabled ? "on" : "off");
+    return system("/usr/bin/xset", tArguments, tOutput);
+}
+
 
 //
 // Auxiliary
@@ -98,7 +105,7 @@ bool FlatTurtle::WebPage::puppetUpdate() {
 
 bool FlatTurtle::WebPage::system(const QString& iCommand, const QStringList& iArguments, QString& oOutput) {
     // Set-up the process
-    qDebug() << "DEBUG: executing system command" << iCommand;
+    qDebug() << "DEBUG: executing system command" << iCommand << "with arguments" << iArguments.join(" ");
     QProcess tProcess(this);
     tProcess.setProcessChannelMode(QProcess::MergedChannels);
     tProcess.start(iCommand, iArguments);

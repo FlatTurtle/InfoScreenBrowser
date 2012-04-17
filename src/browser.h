@@ -30,6 +30,7 @@ namespace FlatTurtle
     public slots:
         bool reboot();
         bool puppetUpdate();
+        bool enableScreen(bool iEnabled);
 
     private:
         // Auxiliary

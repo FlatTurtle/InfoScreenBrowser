@@ -2,12 +2,8 @@ QT += core gui network webkit xml
 
 TARGET = infoscreenbrowser
 
-# qxmpp
 CONFIG += link_pkgconfig
-PKGCONFIG += qxmpp
-
-# QJson
-PKGCONFIG += QJson
+PKGCONFIG += QJson qxmpp
 
 SOURCES += \
     main.cpp \
