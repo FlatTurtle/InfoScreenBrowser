@@ -1,3 +1,11 @@
+infoscreenbrowser (0.2-1) unstable; urgency=low
+
+  * Adding an application interface (currently only reboot()).
+  * Fixing the user agent to a more compatible string.
+  * Subscribing to the admin user.
+
+ -- Tim Besard <tim.besard@gmail.com>  Wed, 11 Apr 2012 16:24:01 +0200
+
 infoscreenbrowser (0.1-1) unstable; urgency=low
 
   * Initial package.
