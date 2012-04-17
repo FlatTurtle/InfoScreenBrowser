@@ -1,3 +1,9 @@
+infoscreenbrowser (0.3-1.1) unstable; urgency=low
+
+  * Adding enableScreen command.
+
+ -- Tim Besard <tim.besard@gmail.com>  Tue, 17 Apr 2012 14:23:15 +0200
+
 infoscreenbrowser (0.2-1) unstable; urgency=low
 
   * Adding an application interface (currently only reboot()).
