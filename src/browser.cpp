@@ -31,13 +31,20 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     QHostInfo tInfo;
     mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
 #endif
+    //connect the urlChanged signal to the urlChanged slot of this class
+    connect(mWebView,SIGNAL(urlChanged(const QUrl)), this, SLOT(urlChanged (const QUrl)));
+}
+
+void FlatTurtle::Browser::urlChanged(const QUrl &url){
+    // Make the application interface available to Javascript code each time the url changes
+    mWebView->page()->mainFrame()->addToJavaScriptWindowObject("application", mWebView->page());
+    ((WebPage)mWebView->page())->setUserAgent("InfoScreenBrowser/" + MainApplication::instance()->applicationVersion() + " QtWebKit/" + QTWEBKIT_VERSION_STR);
 }
 
 FlatTurtle::WebPage::WebPage(QWidget *iParent)
     : QWebPage(iParent) {
     // Make the application interface available to Javascript code
     mainFrame()->addToJavaScriptWindowObject("application", this);
-
     mUserAgent = "InfoScreenBrowser/" + MainApplication::instance()->applicationVersion() + " QtWebKit/" + QTWEBKIT_VERSION_STR;
 }
 
@@ -64,6 +71,9 @@ QString FlatTurtle::WebPage::userAgentForUrl(const QUrl &iUrl) const {
     return mUserAgent;
 }
 
+void FlatTurtle::WebPage::setUserAgent(const QString &str) {
+    mUserAgent = str;
+}
 void FlatTurtle::WebPage::javaScriptConsoleMessage(const QString& iMessage, int iLineNumber, const QString& iSourceId) {
     qDebug() << "Javascript console message at line " << iLineNumber << " of " << iSourceId << ": " << iMessage;
 }

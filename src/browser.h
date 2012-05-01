@@ -22,6 +22,7 @@ namespace FlatTurtle
 
         // WebPage interface
         QString userAgentForUrl(const QUrl &iUrl) const;
+        void FlatTurtle::WebPage::setUserAgent(const QString &str);
         void javaScriptConsoleMessage(const QString &iMessage, int iLineNumber, const QString &iSourceId);
     public slots:
         bool shouldInterruptJavaScript();
@@ -33,6 +34,7 @@ namespace FlatTurtle
         bool enableScreen(bool iEnabled);
 
     private:
+
         // Auxiliary
         bool system(const QString& iCommand, const QStringList& iArguments, QString& oOutput);
         bool sudo(const QStringList& iArguments, QString& oOutput);
@@ -51,6 +53,9 @@ namespace FlatTurtle
         // Infoscreen interface
         QWebView *view();
         QVariant execute(const QString& iCode);
+
+    public slots:
+        void urlChanged ( const QUrl & url );
 
         // Data members
     private:
