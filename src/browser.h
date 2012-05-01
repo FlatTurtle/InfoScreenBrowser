@@ -22,7 +22,7 @@ namespace FlatTurtle
 
         // WebPage interface
         QString userAgentForUrl(const QUrl &iUrl) const;
-        void FlatTurtle::WebPage::setUserAgent(const QString &str);
+        void setUserAgent(const QString &str);
         void javaScriptConsoleMessage(const QString &iMessage, int iLineNumber, const QString &iSourceId);
     public slots:
         bool shouldInterruptJavaScript();

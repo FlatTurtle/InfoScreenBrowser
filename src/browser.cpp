@@ -38,7 +38,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 void FlatTurtle::Browser::urlChanged(const QUrl &url){
     // Make the application interface available to Javascript code each time the url changes
     mWebView->page()->mainFrame()->addToJavaScriptWindowObject("application", mWebView->page());
-    ((WebPage)mWebView->page())->setUserAgent("InfoScreenBrowser/" + MainApplication::instance()->applicationVersion() + " QtWebKit/" + QTWEBKIT_VERSION_STR);
+    ((WebPage*)mWebView->page())->setUserAgent("InfoScreenBrowser/" + MainApplication::instance()->applicationVersion() + " QtWebKit/" + QTWEBKIT_VERSION_STR);
 }
 
 FlatTurtle::WebPage::WebPage(QWidget *iParent)
