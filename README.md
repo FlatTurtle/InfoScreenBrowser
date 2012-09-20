@@ -18,7 +18,7 @@ Installation
 ------------
 
 1. Install your FlatTurtle InfoScreen (check other repository)
-2. Install a The DataTank (http://github.com/iRail/The-DataTank) instance and load the right resources
+2. Install a [The DataTank](http://github.com/iRail/The-DataTank) instance and load the right resources
 3. Link the turtles in your FlatTurtle InfoScreen to your The DataTank instance.
 4. Install this repository on an embedded device after you compiled it
 5. You can now add different settings and customize your set-up.
