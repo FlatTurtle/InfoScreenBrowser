@@ -3,6 +3,7 @@ QT += core gui network webkit xml
 TARGET = infoscreenbrowser
 
 CONFIG += link_pkgconfig
+
 PKGCONFIG += QJson qxmpp
 
 SOURCES += \
@@ -28,3 +29,6 @@ unix {
     INSTALLS += target
     target.path = $$BINDIR
 }
+
+OTHER_FILES += \
+    config.example.ini

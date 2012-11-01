@@ -26,7 +26,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 
 #ifdef DEVEL
     qWarning() << "WARNING: using development infoscreen";
-    mWebView->load(QUrl("http://go.flatturtle.com/development"));
+    mWebView->load(QUrl("http://s.flatturtle.com/stable/banimmo"));
 #else
     QHostInfo tInfo;
     mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
@@ -106,6 +106,16 @@ bool FlatTurtle::WebPage::enableScreen(bool iEnabled) {
     QStringList tArguments;
     tArguments << "dpms" << "force" << (iEnabled ? "on" : "off");
     return system("/usr/bin/xset", tArguments, tOutput);
+}
+
+bool FlatTurtle::WebPage::soundControl(const QString &cmd) {
+    QString tOutput;
+    QSettings settings(QString("/etc/infoscreenbrowser.conf"), QSettings::IniFormat);
+    QString password = settings.value("mpd/password", "").toString();
+    QStringList tArguments;
+    tArguments << "-h" << password;
+    tArguments += cmd.split(QRegExp(" "));
+    return system("/usr/bin/mpc",tArguments, tOutput);
 }
 
 

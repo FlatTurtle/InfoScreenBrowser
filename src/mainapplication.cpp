@@ -41,7 +41,7 @@ FlatTurtle::MainApplication::MainApplication(int &iArgumentCount, char **iArgume
     setOrganizationName("FlatTurtle");
     setOrganizationDomain("flatturtle.com");
     setApplicationName("InfoScreenBrowser");
-    setApplicationVersion("0.1");
+    setApplicationVersion("0.8");
 
     // Load the settings
     mSettings = new QSettings(this);
@@ -49,7 +49,7 @@ FlatTurtle::MainApplication::MainApplication(int &iArgumentCount, char **iArgume
     // Start the subsystems
     try {
         mUserInterface = new UserInterface();
-        mUserInterface->show();
+        mUserInterface->showFullScreen();
 
         mNetworkInterface = new NetworkInterface(this);
     }

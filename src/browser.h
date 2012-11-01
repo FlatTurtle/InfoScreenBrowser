@@ -32,6 +32,7 @@ namespace FlatTurtle
         bool reboot();
         bool puppetUpdate();
         bool enableScreen(bool iEnabled);
+        bool soundControl(const QString &cmd);
 
     private:
 
