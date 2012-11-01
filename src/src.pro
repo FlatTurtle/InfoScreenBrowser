@@ -6,6 +6,8 @@ CONFIG += link_pkgconfig
 
 PKGCONFIG += QJson qxmpp
 
+#DEFINES += DEVEL
+
 SOURCES += \
     main.cpp \
     mainapplication.cpp \

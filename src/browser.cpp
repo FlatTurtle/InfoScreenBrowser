@@ -21,12 +21,13 @@
 
 FlatTurtle::Browser::Browser(QObject *iParent)
     : QObject(iParent) {
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
     mWebView = new QWebView();
     mWebView->setPage((QWebPage*) new WebPage());
 
 #ifdef DEVEL
     qWarning() << "WARNING: using development infoscreen";
-    mWebView->load(QUrl("http://s.flatturtle.com/stable/banimmo"));
+    mWebView->load(QUrl("http://s.flatturtle.com/stable/"));
 #else
     QHostInfo tInfo;
     mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
