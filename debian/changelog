@@ -1,3 +1,9 @@
+infoscreenbrowser (0.5-1-FlatTurtle) unstable; urgency=low
+
+  * changed useragent to provide a bit more information.
+
+ -- Yeri Tiete <yeri@flatturtle.com> Thu, 20 Sept 2012 02:33:20 +0200
+
 infoscreenbrowser (0.4-1.1-FlatTurtle) unstable; urgency=low
 
   * fixed enableScreen to work after page change.
