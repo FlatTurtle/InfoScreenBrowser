@@ -49,7 +49,8 @@ FlatTurtle::MainApplication::MainApplication(int &iArgumentCount, char **iArgume
     // Start the subsystems
     try {
         mUserInterface = new UserInterface();
-        mUserInterface->showFullScreen();
+        //Doesn't work on our genesi set-top boxes, but you may want to uncomment this for other set-top boxes.
+        //mUserInterface->showFullScreen();
 
         mNetworkInterface = new NetworkInterface(this);
     }
