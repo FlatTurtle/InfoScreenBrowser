@@ -1,8 +1,14 @@
+infoscreenbrowser (0.6) unstable; urgency=low
+
+  * added mpd support
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Fri, 02 Nov 2012 00:34:41 +0100
+
 infoscreenbrowser (0.5-1-FlatTurtle) unstable; urgency=low
 
   * changed useragent to provide a bit more information.
 
- -- Yeri Tiete <yeri@flatturtle.com> Thu, 20 Sept 2012 02:33:20 +0200
+ -- Yeri Tiete <yeri@flatturtle.com> Thu, 20 Sep 2012 02:33:20 +0200
 
 infoscreenbrowser (0.4-1.1-FlatTurtle) unstable; urgency=low
 
@@ -29,3 +35,4 @@ infoscreenbrowser (0.1-1) unstable; urgency=low
   * Initial package.
 
  -- Tim Besard <tim.besard@gmail.com>  Thu, 5 Apr 2012 09:36:05 +0200
+
