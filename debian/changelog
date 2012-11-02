@@ -1,3 +1,9 @@
+infoscreenbrowser (0.7) unstable; urgency=low
+
+  * bug fixes
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Fri, 02 Nov 2012 14:15:41 +0100
+
 infoscreenbrowser (0.6) unstable; urgency=low
 
   * added mpd support
