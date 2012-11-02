@@ -36,14 +36,14 @@ This is a project started by the FlatTurtle bvba. It's the back-end for our mobi
 iRail
 -----
 
-More information can be found on [Project iRail](http://project.irail.be/).
+More information can be found on [iRail](http://hello.irail.be/).
 
 License
 -------
 
 GPLv3
 
-(c) 2011 iRail vzw/asbl
+(c) 2011-2013 iRail vzw/asbl
 
 Some interesting links
 -----------------------
