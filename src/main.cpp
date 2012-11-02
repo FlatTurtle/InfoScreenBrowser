@@ -10,7 +10,6 @@
 
 // System includes
 #include <csignal>
-
 // Local includes
 #include "mainapplication.h"
 

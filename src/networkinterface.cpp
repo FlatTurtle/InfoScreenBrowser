@@ -13,7 +13,7 @@
 #include <QtNetwork/QHostInfo>
 #include <qxmpp/QXmppConfiguration.h>
 #include <qxmpp/QXmppRosterManager.h>
-
+#include <QDir>
 
 //
 // Construction and destruction
@@ -30,18 +30,22 @@ FlatTurtle::NetworkInterface::NetworkInterface(QObject *iParent) throw(QExceptio
     connect(this, SIGNAL(disconnected()), SLOT(disconnected()));
     connect(this, SIGNAL(connected()), SLOT(connected()));
 
+    QSettings settings(QString(QDir::homePath() + "/.infoscreenbrowser"), QSettings::IniFormat);
+    QString host = settings.value("xmpp/host", "xmpp.corp.flatturtle.com").toString();
+    QString resource = settings.value("xmpp/resource", "botnet.corp.flatturtle.com").toString();
+
     // Construct the configuration parameters
     QXmppConfiguration tConfiguration;
-    tConfiguration.setHost("xmpp.corp.flatturtle.com");
+    tConfiguration.setHost(host);
 #ifdef DEVEL
     qWarning() << "WARNING: using development XMPP configuration";
-    tConfiguration.setResource("botnet.corp.flatturtle.com");
-    tConfiguration.setJid("testclient@botnet.corp.flatturtle.com");
+    tConfiguration.setResource(resource);
+    tConfiguration.setJid("testclient@"+resource);
 #else
     QHostInfo tHostInfo;
-    tConfiguration.setResource("botnet.corp.flatturtle.com");
-    tConfiguration.setJid(tHostInfo.localHostName() + "@botnet.corp.flatturtle.com");
-    qDebug() << "DEBUG: connecting with JIT" << tHostInfo.localHostName() + "@botnet.corp.flatturtle.com";
+    tConfiguration.setResource(resource);
+    tConfiguration.setJid(tHostInfo.localHostName() + "@" + resource);
+    qDebug() << "DEBUG: connecting with JIT" << tHostInfo.localHostName() + "@" + resource;
 #endif
     tConfiguration.setAutoAcceptSubscriptions(true);
     tConfiguration.setAutoReconnectionEnabled(true);
@@ -74,6 +78,9 @@ void FlatTurtle::NetworkInterface::connected() {
     // TODO: use subscribe() in qxmpp 4.0
     qDebug() << "DEBUG: connected";
     QXmppPresence tPresence(QXmppPresence::Subscribe);
-    tPresence.setTo("admin@botnet.corp.flatturtle.com");
+    QSettings settings(QString(QDir::homePath() + "/.infoscreenbrowser"), QSettings::IniFormat);
+    QString adminaccount = settings.value("xmpp/admin", "admin@botnet.corp.flatturtle.com").toString();
+
+    tPresence.setTo(adminaccount);
     sendPacket(tPresence);
 }

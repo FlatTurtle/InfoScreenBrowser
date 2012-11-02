@@ -10,7 +10,7 @@
 #include <QtNetwork/QHostInfo>
 #include <QtWebKit/QWebFrame>
 #include <QtCore/QProcess>
-
+#include <QDir>
 // Local includes
 #include "mainapplication.h"
 
@@ -21,7 +21,11 @@
 
 FlatTurtle::Browser::Browser(QObject *iParent)
     : QObject(iParent) {
-    QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
+    QSettings settings(QString(QDir::homePath() + "/.infoscreenbrowser"), QSettings::IniFormat);
+    bool pluginsEnabled = settings.value("browser/pluginsenabled", true).toBool();
+    if(pluginsEnabled){
+        QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
+    }
     mWebView = new QWebView();
     mWebView->setPage((QWebPage*) new WebPage());
 
@@ -111,10 +115,12 @@ bool FlatTurtle::WebPage::enableScreen(bool iEnabled) {
 
 bool FlatTurtle::WebPage::soundControl(const QString &cmd) {
     QString tOutput;
-    QSettings settings(QString("/etc/infoscreenbrowser.conf"), QSettings::IniFormat);
+    QSettings settings(QString(QDir::homePath() + "/.infoscreenbrowser"), QSettings::IniFormat);
     QString password = settings.value("mpd/password", "").toString();
     QStringList tArguments;
-    tArguments << "-h" << password;
+    if(password != ""){
+        tArguments << "-h" << password;
+    }
     tArguments += cmd.split(QRegExp(" "));
     return system("/usr/bin/mpc",tArguments, tOutput);
 }

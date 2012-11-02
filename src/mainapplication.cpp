@@ -41,7 +41,7 @@ FlatTurtle::MainApplication::MainApplication(int &iArgumentCount, char **iArgume
     setOrganizationName("FlatTurtle");
     setOrganizationDomain("flatturtle.com");
     setApplicationName("InfoScreenBrowser");
-    setApplicationVersion("0.6");
+    setApplicationVersion("0.7");
 
     // Load the settings
     mSettings = new QSettings(this);
@@ -49,8 +49,11 @@ FlatTurtle::MainApplication::MainApplication(int &iArgumentCount, char **iArgume
     // Start the subsystems
     try {
         mUserInterface = new UserInterface();
-        //Doesn't work on our genesi set-top boxes, but you may want to uncomment this for other set-top boxes.
-        //mUserInterface->showFullScreen();
+        QSettings settings(QString(QDir::homePath() + "/.infoscreenbrowser"), QSettings::IniFormat);
+        bool fullscreen = settings.value("browser/fullscreen", false).toBool();
+        if(fullscreen){
+            mUserInterface->showFullScreen();
+        }
 
         mNetworkInterface = new NetworkInterface(this);
     }
