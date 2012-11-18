@@ -1,6 +1,6 @@
 infoscreenbrowser (0.8) unstable; urgency=low
 
-  * Qt changes by Johan
+  * Allow for custom plugins in WebKit with overloaded createPlugin(), in this case to allow a custom Phonon VideoPlayer object to be embedded. The MyPlayer clasee creates a new metatype with some additional slots for control. This metatype has to be registered well in advance, so qRegisterMetaType() in main() is the first thing called.
 
  -- Johan Dams <johan.dams@nordicaurum.com> Sun, 18 Nov 2012 19:01:00 +0100
 
