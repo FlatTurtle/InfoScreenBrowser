@@ -39,6 +39,7 @@ namespace FlatTurtle
         // Auxiliary
         bool system(const QString& iCommand, const QStringList& iArguments, QString& oOutput);
         bool sudo(const QStringList& iArguments, QString& oOutput);
+        QObject* createPlugin(const QString&, const QUrl&, const QStringList&, const QStringList&);
 
         // Member data
         QString mUserAgent;
@@ -54,7 +55,7 @@ namespace FlatTurtle
         // Infoscreen interface
         QWebView *view();
         QVariant execute(const QString& iCode);
-
+		
     public slots:
         void urlChanged ( const QUrl & url );
 

@@ -12,6 +12,7 @@
 #include <csignal>
 // Local includes
 #include "mainapplication.h"
+#include "myplayer.h"
 
 struct ExitHandler {
     ExitHandler() {
@@ -29,7 +30,10 @@ struct ExitHandler {
 };
 
 int main(int iArgumentCount, char *iArgumentValues[]) {
-    // Handle Unix signals
+    // Video player object meta type
+	qRegisterMetaType<MyPlayer>("MyPlayer");
+
+	// Handle Unix signals
     ExitHandler tExitHandler;
 
     // Run the applications

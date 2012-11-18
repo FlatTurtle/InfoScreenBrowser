@@ -1,4 +1,4 @@
-QT += core gui network webkit xml
+QT += core gui network webkit xml phonon
 
 TARGET = infoscreenbrowser
 
@@ -13,14 +13,16 @@ SOURCES += \
     mainapplication.cpp \
     userinterface.cpp \
     browser.cpp \
-    networkinterface.cpp
+    networkinterface.cpp \
+    myplayer.cpp
 
 HEADERS += \
     mainapplication.h \
     userinterface.h \
     qexception.h \
     browser.h \
-    networkinterface.h
+    networkinterface.h \
+    myplayer.h
 
 unix {
     isEmpty(PREFIX) {

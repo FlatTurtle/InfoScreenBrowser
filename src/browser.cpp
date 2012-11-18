@@ -53,6 +53,20 @@ FlatTurtle::WebPage::WebPage(QWidget *iParent)
     mUserAgent = "FlatTurtle InfoScreenBrowser/" + MainApplication::instance()->applicationVersion() + " QtWebKit/" + QTWEBKIT_VERSION_STR;
 }
 
+/* The Plugin stuff */
+QObject *FlatTurtle::WebPage::createPlugin(
+		const QString &classid,
+		const QUrl &,
+		const QStringList &,
+		const QStringList &)
+{
+	QObject *result = 0;
+	result = static_cast<QObject*>(
+			QMetaType::construct(
+				QMetaType::type(
+					classid.toLatin1())));
+	return result;
+}
 
 //
 // Infoscreen interface
