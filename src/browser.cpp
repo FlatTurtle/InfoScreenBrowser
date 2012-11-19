@@ -31,10 +31,10 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 
 #ifdef DEVEL
     qWarning() << "WARNING: using development infoscreen";
-    mWebView->load(QUrl("https://s.flatturtle.com/stable/"));
+    mWebView->load(QUrl("http://s.flatturtle.com/stable/"));
 #else
     QHostInfo tInfo;
-    mWebView->load(QUrl("https://go.flatturtle.com/" + tInfo.localHostName()));
+    mWebView->load(QUrl("http://go.flatturtle.com/" + tInfo.localHostName()));
 #endif
     //connect the urlChanged signal to the urlChanged slot of this class
     connect(mWebView,SIGNAL(urlChanged(const QUrl)), this, SLOT(urlChanged (const QUrl)));
