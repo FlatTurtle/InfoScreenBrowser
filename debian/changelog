@@ -1,8 +1,20 @@
+infoscreenbrowser (0.8-2) unstable; urgency=low
+
+  * re-added HTTPS -.-)
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Tue, 20 Nov 2012 23:16:59 +0100
+
+infoscreenbrowser (0.8-1) unstable; urgency=low
+
+  * Removed HTTPS
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Mon, 19 Nov 2012 13:12:59 +0100
+
 infoscreenbrowser (0.8) unstable; urgency=low
 
   * Allow for custom plugins in WebKit with overloaded createPlugin(), in this case to allow a custom Phonon VideoPlayer object to be embedded. The MyPlayer clasee creates a new metatype with some additional slots for control. This metatype has to be registered well in advance, so qRegisterMetaType() in main() is the first thing called.
 
- -- Johan Dams <johan.dams@nordicaurum.com> Sun, 18 Nov 2012 19:01:00 +0100
+ -- Johan Dams <johan.dams@nordicaurum.com>  Sun, 18 Nov 2012 19:01:00 +0100
 
 infoscreenbrowser (0.7) unstable; urgency=low
 
@@ -47,4 +59,3 @@ infoscreenbrowser (0.1-1) unstable; urgency=low
   * Initial package.
 
  -- Tim Besard <tim.besard@gmail.com>  Thu, 5 Apr 2012 09:36:05 +0200
-
