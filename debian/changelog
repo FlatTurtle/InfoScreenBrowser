@@ -1,3 +1,15 @@
+infoscreenbrowser (0.9) unstable; urgency=low
+
+  * Player won't loop video any longer and removed test function
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Tue, 4 Dec 2012 23:26:06 +0100
+
+infoscreenbrowser (0.8-4) unstable; urgency=low
+
+  * recompiled with other rule set.
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Tue, 27 Nov 2012 10:21:10 +0100
+
 infoscreenbrowser (0.8-3) unstable; urgency=low
 
   * recompiled with /usr/local/Trolltech/Qt-4.8.3/bin/qmake
