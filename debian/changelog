@@ -1,3 +1,9 @@
+infoscreenbrowser (0.8-3) unstable; urgency=low
+
+  * recompiled with /usr/local/Trolltech/Qt-4.8.3/bin/qmake
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Sun, 25 Nov 2012 01:23:34 +0100
+
 infoscreenbrowser (0.8-2) unstable; urgency=low
 
   * re-added HTTPS -.-)
