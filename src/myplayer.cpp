@@ -3,7 +3,7 @@
 
 MyPlayer::MyPlayer(QWidget *parent) : Phonon::VideoPlayer(Phonon::VideoCategory, parent)
 {
-	connect(this, SIGNAL(finished()), this, SLOT(replay()));
+    //connect(this, SIGNAL(finished()), this, SLOT(replay()));
 }
 
 MyPlayer::MyPlayer(const MyPlayer &): Phonon::VideoPlayer(0)
@@ -12,10 +12,6 @@ MyPlayer::MyPlayer(const MyPlayer &): Phonon::VideoPlayer(0)
 
 void MyPlayer::replay(void){
 	this->play(QUrl::fromLocalFile(current));
-}
-
-void MyPlayer::test(void){
-	qDebug() << "Testing...";
 }
 
 void MyPlayer::playfile(QString file){

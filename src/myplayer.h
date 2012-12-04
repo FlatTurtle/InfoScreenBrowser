@@ -15,8 +15,7 @@ class MyPlayer: public Phonon::VideoPlayer
       // Q_DECLARE_METATYPE requires a copy-constructor
       MyPlayer(const MyPlayer &copy);
    public slots:
-	   void replay(void);
-       void test(void);
+       void replay(void);
 	   void playfile(QString);
 
 };
