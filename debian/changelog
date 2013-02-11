@@ -1,3 +1,9 @@
+infoscreenbrowser (1.0) unstable; urgency=low
+
+  * Added caching removal
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Mon, 11 Feb 2013 15:27:06 +0100
+
 infoscreenbrowser (0.9) unstable; urgency=low
 
   * Player won't loop video any longer and removed test function
