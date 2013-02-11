@@ -26,6 +26,8 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     if(pluginsEnabled){
         QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
     }
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::OfflineWebApplicationCacheEnabled, false);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::TiledBackingStoreEnabled, false);
     mWebView = new QWebView();
     mWebView->setPage((QWebPage*) new WebPage());
 
@@ -34,6 +36,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     mWebView->load(QUrl("https://go.flatturtle.com/"));
 #else
     QHostInfo tInfo;
+
     mWebView->load(QUrl("https://go.flatturtle.com/" + tInfo.localHostName()));
 #endif
     //connect the urlChanged signal to the urlChanged slot of this class
