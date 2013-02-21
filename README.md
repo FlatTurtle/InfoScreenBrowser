@@ -47,9 +47,9 @@ GPLv3
 
 Some interesting links
 -----------------------
-* http://s.flatturtle.com - a DEMO
+* http://s.flatturtle.com/demo/view/stable/ - a DEMO
 * http://data.irail.be - our API
-* http://project.iRail.be - The iRail project
+* http://hello.iRail.be - The iRail project
 
 
 
