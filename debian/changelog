@@ -1,3 +1,9 @@
+infoscreenbrowser (1.0-1) unstable; urgency=low
+
+  * Reverted 1.0 changes, as this didn't solve anything and seemed to cause issues.
+
+ -- Yeri Tiete <Yeri@flatturtle.com>  Thu, 21 Feb 2013 16:35:06 +0100
+
 infoscreenbrowser (1.0) unstable; urgency=low
 
   * Added caching removal
