@@ -1,3 +1,9 @@
+infoscreenbrowser (1.0-2) unstable; urgency=low
+
+  * Applied Johan's patch in an attempt to solve the Gmaps traffic layer issue.
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Thu, 24 Feb 2013 16:14:06 +0100
+
 infoscreenbrowser (1.0-1) unstable; urgency=low
 
   * Reverted 1.0 changes, as this didn't solve anything and seemed to cause issues.
