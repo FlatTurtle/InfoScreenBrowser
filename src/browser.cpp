@@ -6,6 +6,7 @@
 #include "browser.h"
 
 // Library includes
+#include <QTimer>
 #include <QtCore/QDebug>
 #include <QtNetwork/QHostInfo>
 #include <QtWebKit/QWebFrame>
@@ -26,8 +27,11 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     if(pluginsEnabled){
         QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
     }
-    QWebSettings::globalSettings()->setAttribute(QWebSettings::OfflineWebApplicationCacheEnabled, false);
-    QWebSettings::globalSettings()->setAttribute(QWebSettings::TiledBackingStoreEnabled, false);
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(clearCache()));
+    timer->start(5000);
+
     mWebView = new QWebView();
     mWebView->setPage((QWebPage*) new WebPage());
 
@@ -41,6 +45,10 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 #endif
     //connect the urlChanged signal to the urlChanged slot of this class
     connect(mWebView,SIGNAL(urlChanged(const QUrl)), this, SLOT(urlChanged (const QUrl)));
+}
+
+void FlatTurtle::Browser::clearCache(){
+    QWebSettings::clearMemoryCaches();
 }
 
 void FlatTurtle::Browser::urlChanged(const QUrl &url){

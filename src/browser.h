@@ -58,6 +58,7 @@ namespace FlatTurtle
 		
     public slots:
         void urlChanged ( const QUrl & url );
+        void clearCache();
 
         // Data members
     private:
