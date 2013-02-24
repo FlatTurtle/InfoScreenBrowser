@@ -39,9 +39,9 @@ FlatTurtle::MainApplication::MainApplication(int &iArgumentCount, char **iArgume
 
     // Configure the application
     setOrganizationName("FlatTurtle");
-    setOrganizationDomain("flatturtle.com");
+    setOrganizationDomain("FlatTurtle.com");
     setApplicationName("InfoScreenBrowser");
-    setApplicationVersion("0.9");
+    setApplicationVersion("1.0");
 
     // Load the settings
     mSettings = new QSettings(this);

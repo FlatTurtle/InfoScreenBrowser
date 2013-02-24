@@ -40,7 +40,6 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     mWebView->load(QUrl("https://go.flatturtle.com/"));
 #else
     QHostInfo tInfo;
-
     mWebView->load(QUrl("https://go.flatturtle.com/" + tInfo.localHostName()));
 #endif
     //connect the urlChanged signal to the urlChanged slot of this class
