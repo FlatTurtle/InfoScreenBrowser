@@ -1,3 +1,9 @@
+infoscreenbrowser (1.1) unstable; urgency=low
+
+  * Attempt to fix memory leak (cc Johan).
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Fri, 1 Mar 2013 21:48:06 +0100
+
 infoscreenbrowser (1.0-2) unstable; urgency=low
 
   * Applied Johan's patch in an attempt to solve the Gmaps traffic layer issue.

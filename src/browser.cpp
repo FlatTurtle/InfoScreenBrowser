@@ -28,6 +28,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
         QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
     }
 
+    QWebSettings::setMaximumPagesInCache(1);
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(clearCache()));
     timer->start(5000);
@@ -48,6 +49,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 
 void FlatTurtle::Browser::clearCache(){
     QWebSettings::clearMemoryCaches();
+    qApp->processEvents();
 }
 
 void FlatTurtle::Browser::urlChanged(const QUrl &url){
