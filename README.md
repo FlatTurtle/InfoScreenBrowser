@@ -38,12 +38,16 @@ iRail
 
 More information can be found on [iRail](http://hello.irail.be/).
 
+FlatTurtle
+
+More information can be found on [FlatTurtle](https://FlatTurtle.com/).
+
 License
 -------
 
 GPLv3
 
-(c) 2011-2013 iRail vzw/asbl
+(c) 2011-2013 FlatTurtle
 
 Some interesting links
 -----------------------
