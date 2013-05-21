@@ -14,7 +14,8 @@ SOURCES += \
     userinterface.cpp \
     browser.cpp \
     networkinterface.cpp \
-    myplayer.cpp
+    myplayer.cpp \
+	networktest.cpp
 
 HEADERS += \
     mainapplication.h \
@@ -22,7 +23,8 @@ HEADERS += \
     qexception.h \
     browser.h \
     networkinterface.h \
-    myplayer.h
+    myplayer.h\
+	networktest.h
 
 unix {
     isEmpty(PREFIX) {

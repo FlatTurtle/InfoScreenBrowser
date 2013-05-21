@@ -14,7 +14,7 @@
 #include <QDir>
 // Local includes
 #include "mainapplication.h"
-
+#include "networktest.h"
 
 //
 // Construction and destruction
@@ -36,6 +36,10 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     mWebView = new QWebView();
     mWebView->setPage((QWebPage*) new WebPage());
 
+	/* Check connectivity, and keep trying */
+	NetWorkTest *t = new NetWorkTest();
+	t->checkSite("http://data.flatturtle.com");
+
 #ifdef DEVEL
     qWarning() << "WARNING: using development infoscreen";
     mWebView->load(QUrl("https://go.flatturtle.com/"));
@@ -53,6 +57,17 @@ void FlatTurtle::Browser::clearCache(){
 }
 
 void FlatTurtle::Browser::urlChanged(const QUrl &url){
+	
+	static QUrl tmp;
+	
+	if(tmp != url){
+		NetWorkTest *t = new NetWorkTest();
+		t->checkSite("http://data.flatturtle.com");
+  		//qDebug() << url;
+		mWebView->load(QUrl(url));
+		tmp = url;
+	}
+
     // Make the application interface available to Javascript code each time the url changes
     mWebView->page()->mainFrame()->addToJavaScriptWindowObject("application", mWebView->page());
     ((WebPage*)mWebView->page())->setUserAgent("FlatTurtle InfoScreenBrowser/" + MainApplication::instance()->applicationVersion() + " QtWebKit/" + QTWEBKIT_VERSION_STR);
