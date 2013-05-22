@@ -38,7 +38,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 
 	/* Check connectivity, and keep trying */
 	NetWorkTest *t = new NetWorkTest();
-	t->checkSite("http://data.flatturtle.com");
+	t->checkSite("https://data.flatturtle.com");
 
 #ifdef DEVEL
     qWarning() << "WARNING: using development infoscreen";
@@ -57,12 +57,12 @@ void FlatTurtle::Browser::clearCache(){
 }
 
 void FlatTurtle::Browser::urlChanged(const QUrl &url){
-	
+
 	static QUrl tmp;
-	
+
 	if(tmp != url){
 		NetWorkTest *t = new NetWorkTest();
-		t->checkSite("http://data.flatturtle.com");
+		t->checkSite("https://data.flatturtle.com");
   		//qDebug() << url;
 		mWebView->load(QUrl(url));
 		tmp = url;
