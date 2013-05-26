@@ -49,6 +49,14 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 #endif
     //connect the urlChanged signal to the urlChanged slot of this class
     connect(mWebView,SIGNAL(urlChanged(const QUrl)), this, SLOT(urlChanged (const QUrl)));
+
+	/* For Monit */
+	if (!server.listen(QHostAddress(QHostAddress::LocalHost), 20000)) {
+		qDebug() << "Error listening on socket for Monit monitoring";
+		close(-1);
+		return;
+	}
+	
 }
 
 void FlatTurtle::Browser::clearCache(){

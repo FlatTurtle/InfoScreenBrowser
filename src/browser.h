@@ -11,6 +11,8 @@
 #include <QtWebKit/QWebView>
 #include <QtWebKit/QWebPage>
 
+#include "monitserver.h"
+
 namespace FlatTurtle
 {
     class WebPage : public QWebPage
@@ -63,6 +65,7 @@ namespace FlatTurtle
         // Data members
     private:
         QWebView *mWebView;
+		MonitServer server;
     };
 }
 #endif // BROWSER_H

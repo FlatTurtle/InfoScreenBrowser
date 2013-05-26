@@ -15,7 +15,9 @@ SOURCES += \
     browser.cpp \
     networkinterface.cpp \
     myplayer.cpp \
-	networktest.cpp
+	networktest.cpp \
+    monitserver.cpp \ 
+    monitserverthread.cpp
 
 HEADERS += \
     mainapplication.h \
@@ -24,7 +26,9 @@ HEADERS += \
     browser.h \
     networkinterface.h \
     myplayer.h\
-	networktest.h
+	networktest.h\
+    monitserver.h \
+    monitserverthread.h
 
 unix {
     isEmpty(PREFIX) {
