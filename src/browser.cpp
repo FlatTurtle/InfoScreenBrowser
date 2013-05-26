@@ -151,6 +151,13 @@ bool FlatTurtle::WebPage::soundControl(const QString &cmd) {
     return system("/usr/bin/mpc",tArguments, tOutput);
 }
 
+bool FlatTurtle::WebPage::takeScreenshot(const QString & mail = "" ) {
+    QString tOutput;
+    QStringList tArguments;
+    tArguments << mail;
+    return system("/usr/local/bin/screenshot.sh", tArguments, tOutput);
+}
+
 
 //
 // Auxiliary
