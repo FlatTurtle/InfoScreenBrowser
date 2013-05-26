@@ -15,7 +15,7 @@ SOURCES += \
     browser.cpp \
     networkinterface.cpp \
     myplayer.cpp \
-	networktest.cpp \
+    networktest.cpp \
     monitserver.cpp \ 
     monitserverthread.cpp
 
@@ -25,8 +25,8 @@ HEADERS += \
     qexception.h \
     browser.h \
     networkinterface.h \
-    myplayer.h\
-	networktest.h\
+    myplayer.h \
+    networktest.h \
     monitserver.h \
     monitserverthread.h
 
