@@ -1,3 +1,9 @@
+infoscreenbrowser (1.2-1) unstable; urgency=low
+
+  * Ok, let's eliminate some other stuff: can you update the browser removing the line: timer->start(5000); from browser.cpp. Let's see if that makes any difference. It will cause issues with the traffic layer, but we can find another fix in case this one is by any chance the cause... (Johan)
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Wed, 29 May 2013 13:08:16 +0200
+
 infoscreenbrowser (1.2) unstable; urgency=low
 
   * In case of no internet, keep trying until it can access the interwebs (Johan),

@@ -31,7 +31,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     QWebSettings::setMaximumPagesInCache(1);
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(clearCache()));
-    timer->start(5000);
+    //timer->start(5000);
 
     mWebView = new QWebView();
     mWebView->setPage((QWebPage*) new WebPage());
