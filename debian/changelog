@@ -1,3 +1,9 @@
+infoscreenbrowser (1.2-2) unstable; urgency=low
+
+  * Added some telnet debugging (Johan)
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Wed, 30 May 2013 00:48:05 +0200
+
 infoscreenbrowser (1.2-1) unstable; urgency=low
 
   * Ok, let's eliminate some other stuff: can you update the browser removing the line: timer->start(5000); from browser.cpp. Let's see if that makes any difference. It will cause issues with the traffic layer, but we can find another fix in case this one is by any chance the cause... (Johan)
