@@ -1,3 +1,9 @@
+infoscreenbrowser (1.2-3) unstable; urgency=low
+
+  * Qt everywhere update
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Mon, 3 Jun 2013 09:19:21 +0200
+
 infoscreenbrowser (1.2-2) unstable; urgency=low
 
   * Added some telnet debugging (Johan)
