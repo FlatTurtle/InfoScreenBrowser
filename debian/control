@@ -1,5 +1,5 @@
 Source: infoscreenbrowser
-Maintainer: Tim Besard <tim.besard@gmail.com>
+Maintainer: Yeri Tiete <yeri@flatturtle.com>
 Homepage: http://flatturtle.com/
 Priority: extra
 Build-Depends: debhelper (>= 7.0.50~), qt4-qmake, pkg-config, libqt4-dev, libqtwebkit-dev, libqxmpp-dev

@@ -7,6 +7,6 @@
 override_dh_shlibdeps:
 	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
 override_dh_auto_configure:
-	/usr/local/Trolltech/Qt-4.8.3/bin/qmake CONFIG+=debug PREFIX=/usr
+	/usr/local/Trolltech/Qt-4.8.4/bin/qmake CONFIG+=debug PREFIX=/usr
 override_dh_strip:
 	dh_strip --dbg-package=infoscreenbrowser-dbg

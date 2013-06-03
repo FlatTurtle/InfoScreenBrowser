@@ -1,5 +1,6 @@
 /**
  * Copyright (C) 2011-2012 Tim Besard <tim.besard@gmail.com>
+ * Copyright 2012-2013 FlatTurtle
  *
  * All rights reserved.
  */
