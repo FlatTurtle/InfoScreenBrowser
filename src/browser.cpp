@@ -73,16 +73,10 @@ void FlatTurtle::Browser::clearCache(){
 }
 
 void FlatTurtle::Browser::urlChanged(const QUrl &url){
-
-	static QUrl tmp;
-
-	if(tmp != url){
-		NetWorkTest *t = new NetWorkTest();
-		t->checkSite("https://data.flatturtle.com");
-  		//qDebug() << url;
-		mWebView->load(QUrl(url));
-		tmp = url;
-	}
+    NetWorkTest *t = new NetWorkTest();
+    t->checkSite("https://data.flatturtle.com");
+    //qDebug() << url;
+    mWebView->load(QUrl(url));
 
     // Make the application interface available to Javascript code each time the url changes
     mWebView->page()->mainFrame()->addToJavaScriptWindowObject("application", mWebView->page());
