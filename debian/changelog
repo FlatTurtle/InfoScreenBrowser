@@ -1,11 +1,5 @@
 infoscreenbrowser (1.2-3) unstable; urgency=low
 
-  * removed if clausule to check whether url changed in networkTester
-
- -- Yeri Tiete <yeri@FlatTurtle.com>  Sat, 8 Jun 2013 01:13:14 +0200
-
-infoscreenbrowser (1.2-3) unstable; urgency=low
-
   * Qt everywhere update
 
  -- Yeri Tiete <yeri@FlatTurtle.com>  Mon, 3 Jun 2013 09:19:21 +0200
