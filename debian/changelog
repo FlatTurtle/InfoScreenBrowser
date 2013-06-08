@@ -1,3 +1,9 @@
+infoscreenbrowser (1.2-4) unstable; urgency=low
+
+  * Add method to load url from javascript besides using document.location.href. Use application.loadURL("Your URL here..."). This is to test the network availability check. (Johan)
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Sat, 8 Jun 2013 09:38:01 +0200
+
 infoscreenbrowser (1.2-3) unstable; urgency=low
 
   * Qt everywhere update
