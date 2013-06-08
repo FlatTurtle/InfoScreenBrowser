@@ -189,6 +189,14 @@ bool FlatTurtle::WebPage::takeScreenshot(const QString & mail = "" ) {
     return system("/usr/local/bin/screenshot.sh", tArguments, tOutput);
 }
 
+bool FlatTurtle::WebPage::loadURL(const QString link){
+    QUrl url = QUrl(link);
+    NetWorkTest *t = new NetWorkTest();
+    t->checkSite("https://data.flatturtle.com");
+    mainFrame()->load(url);
+    return true;
+}
+
 
 //
 // Auxiliary

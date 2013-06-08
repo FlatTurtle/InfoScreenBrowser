@@ -36,6 +36,7 @@ namespace FlatTurtle
         bool enableScreen(bool iEnabled);
         bool soundControl(const QString &cmd);
         bool takeScreenshot(const QString &mail);
+        bool loadURL(const QString link);
 
     private:
 
