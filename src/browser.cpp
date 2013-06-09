@@ -56,7 +56,7 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 		close(-1);
 		return;
 	}
-	
+
 }
 
 void FlatTurtle::Browser::clearCache(){
