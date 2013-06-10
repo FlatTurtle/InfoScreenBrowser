@@ -62,14 +62,6 @@ FlatTurtle::Browser::Browser(QObject *iParent)
 void FlatTurtle::Browser::clearCache(){
     QWebSettings::clearMemoryCaches();
     qApp->processEvents();
-
-	if(server.flag == 1){
-		//QHostInfo tInfo;
-		//mWebView->load(QUrl("https://go.flatturtle.com/" + tInfo.localHostName()));
-		mWebView->load(QUrl("http://www.google.com"));
-		server.flag = 0;
-	}
-
 }
 
 void FlatTurtle::Browser::urlChanged(const QUrl &url){
