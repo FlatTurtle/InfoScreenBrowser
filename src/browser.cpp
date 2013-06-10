@@ -186,13 +186,6 @@ bool FlatTurtle::WebPage::loadURL(const QString link){
 bool FlatTurtle::WebPage::clearCache(){
     QWebSettings::clearMemoryCaches();
     qApp->processEvents();
-
-    /*UNCOMMENT FOR MONIT
-    if(server.flag == 1){
-        QHostInfo tInfo;
-        mWebView->load(QUrl("https://go.flatturtle.com/" + tInfo.localHostName()));
-        server.flag = 0;
-    }*/
 }
 
 //

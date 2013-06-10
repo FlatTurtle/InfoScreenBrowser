@@ -9,7 +9,7 @@ class MonitServer : public QTcpServer
 
 public:
     MonitServer(QObject *parent = 0);
-	int flag;
+
 protected:
     void incomingConnection(int socketDescriptor);
 
