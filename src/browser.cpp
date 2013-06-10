@@ -29,9 +29,6 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     }
 
     QWebSettings::setMaximumPagesInCache(1);
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(clearCache()));
-    timer->start(5000);
 
     mWebView = new QWebView();
     mWebView->setPage((QWebPage*) new WebPage());
@@ -50,18 +47,12 @@ FlatTurtle::Browser::Browser(QObject *iParent)
     //connect the urlChanged signal to the urlChanged slot of this class
     connect(mWebView,SIGNAL(urlChanged(const QUrl)), this, SLOT(urlChanged (const QUrl)));
 
-	/* For Monit */
-	if (!server.listen(QHostAddress(QHostAddress::LocalHost), 20000)) {
+    /* For Monit *//*
+    if (!server.listen(QHostAddress(QHostAddress::LocalHost), 20000)) {
 		qDebug() << "Error listening on socket for Monit monitoring";
 		close(-1);
 		return;
-	}
-
-}
-
-void FlatTurtle::Browser::clearCache(){
-    QWebSettings::clearMemoryCaches();
-    qApp->processEvents();
+    }*/
 }
 
 void FlatTurtle::Browser::urlChanged(const QUrl &url){
@@ -86,6 +77,7 @@ FlatTurtle::WebPage::WebPage(QWidget *iParent)
     // Make the application interface available to Javascript code
     mainFrame()->addToJavaScriptWindowObject("application", this);
     mUserAgent = "FlatTurtle InfoScreenBrowser/" + MainApplication::instance()->applicationVersion() + " QtWebKit/" + QTWEBKIT_VERSION_STR;
+    mWebView = (QWebView*) iParent;
 }
 
 /* The Plugin stuff */
@@ -189,6 +181,11 @@ bool FlatTurtle::WebPage::loadURL(const QString link){
     return true;
 }
 
+
+bool FlatTurtle::WebPage::clearCache(){
+    QWebSettings::clearMemoryCaches();
+    qApp->processEvents();
+}
 
 //
 // Auxiliary

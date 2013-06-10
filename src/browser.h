@@ -32,6 +32,7 @@ namespace FlatTurtle
         // Application interface
     public slots:
         bool reboot();
+        bool clearCache();
         bool puppetUpdate();
         bool enableScreen(bool iEnabled);
         bool soundControl(const QString &cmd);
@@ -47,6 +48,7 @@ namespace FlatTurtle
 
         // Member data
         QString mUserAgent;
+        QWebView *mWebView;
     };
 
     class Browser : public QObject
@@ -62,12 +64,11 @@ namespace FlatTurtle
 		
     public slots:
         void urlChanged ( const QUrl & url );
-        void clearCache();
 	
         // Data members
     private:
         QWebView *mWebView;
-		MonitServer server;
+        MonitServer server;
     };
 }
 #endif // BROWSER_H

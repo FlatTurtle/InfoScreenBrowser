@@ -1,3 +1,9 @@
+infoscreenbrowser (1.2-5) unstable; urgency=low
+
+  * provided application.clearCache() to clear browser cache
+
+ -- Pieter Colaert <pieter@flatturtle.com>  Mon, 10 Jun 2013 22:12:11 +0200
+
 infoscreenbrowser (1.2-4) unstable; urgency=low
 
   * Add method to load url from javascript besides using document.location.href. Use application.loadURL("Your URL here..."). This is to test the network availability check. (Johan)
