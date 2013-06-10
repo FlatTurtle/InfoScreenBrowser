@@ -64,9 +64,8 @@ void FlatTurtle::Browser::clearCache(){
     qApp->processEvents();
 
 	if(server.flag == 1){
-		//QHostInfo tInfo;
-		//mWebView->load(QUrl("https://go.flatturtle.com/" + tInfo.localHostName()));
-		mWebView->load(QUrl("http://www.google.com"));
+		QHostInfo tInfo;
+		mWebView->load(QUrl("https://go.flatturtle.com/" + tInfo.localHostName()));
 		server.flag = 0;
 	}
 
