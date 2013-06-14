@@ -185,7 +185,7 @@ bool FlatTurtle::WebPage::loadURL(const QString link){
 bool FlatTurtle::WebPage::clearCache(){
     QWebSettings::clearMemoryCaches();
     qApp->processEvents();
-	return true;
+    return true;
 }
 
 //
