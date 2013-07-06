@@ -1,3 +1,9 @@
+infoscreenbrowser (1.2-6) unstable; urgency=low
+
+  * Return statement missing.
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Sat, 6 Jul 2013 17:57:57 +0200
+
 infoscreenbrowser (1.2-5) unstable; urgency=low
 
   * provided application.clearCache() to clear browser cache
