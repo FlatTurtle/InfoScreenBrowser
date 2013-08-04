@@ -12,3 +12,6 @@ make install
 cd ..
 dch
 dpkg-buildpackage -uc -us
+cd ..
+rename s/"infoscreenbrowser"/"infoscreenbrowser_rpi_"/ infoscreenbrowser_*_armhf.deb
+
