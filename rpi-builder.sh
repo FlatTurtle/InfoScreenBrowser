@@ -1,11 +1,11 @@
 #!/bin/bash
-ln -s debian/efikamx-rules debian/rules
+ln -s debian/rpi-rules debian/rules
 rm src/Makefile
 rm src/*.o
 rm -r build/
 mkdir build/
 cd build/
-/usr/local/Trolltech/Qt-4.8.4/bin/qmake ../
+/usr/bin/qmake ../
 make
 make install
 cd ..
