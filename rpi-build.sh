@@ -1,4 +1,5 @@
 #!/bin/bash
+rm debian/rules
 ln -s `pwd`/debian/rpi-rules debian/rules
 rm src/Makefile
 rm src/*.o
@@ -11,4 +12,3 @@ make install
 cd ..
 dch
 dpkg-buildpackage -uc -us
-rm debian/rules
