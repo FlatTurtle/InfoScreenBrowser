@@ -1,5 +1,5 @@
 #!/bin/bash
-ln -s debian/efikamx-rules debian/rules
+ln -s `pwd`/debian/efikamx-rules debian/rules
 rm src/Makefile
 rm src/*.o
 rm -r build/

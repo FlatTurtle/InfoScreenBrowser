@@ -1,5 +1,5 @@
 #!/bin/bash
-ln -s debian/rpi-rules debian/rules
+ln -s `pwd`/debian/rpi-rules debian/rules
 rm src/Makefile
 rm src/*.o
 rm -r build/
