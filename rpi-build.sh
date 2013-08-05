@@ -13,12 +13,12 @@ cd ..
 dch
 dpkg-buildpackage -uc -us
 cd ..
-rename s/"infoscreenbrowser"/"infoscreenbrowser_rpi_"/ infoscreenbrowser_*_armhf.deb
+rename s/"infoscreenbrowser"/"infoscreenbrowser_rpi"/ infoscreenbrowser_*_armhf.deb
 echo ""
 echo ""
 echo "----------------------------------"
 echo "all done... sign & publicize with:"
 echo "----------------------------------"
 echo "(1)	dpkg-sig -k repository@flatturtle.com --sign builder infoscreenbrowser_rpi..."
-echo "(2)	reprepro --verbose --basedir /srv/debian/rpi includedeb rpi infoscreenbrowser_rpi..."
+echo "(2)	reprepro --verbose --basedir /srv/debian/rpi includedeb wheezy infoscreenbrowser_rpi..."
 echo "----------------------------------"
