@@ -1,3 +1,9 @@
+infoscreenbrowser (1.3-1) unstable; urgency=low
+
+  * Different approach to locking video...
+
+ -- Johan Dams <johan@flatturtle.com>  Tue, 6 Aug 2013 17:21:03 +0200
+
 infoscreenbrowser (1.3) unstable; urgency=low
 
   * This should fix video lock ups. The issue is related to Qt somehow opening the file after every replay and probably not releasing resources properly. Instead of digging into the Qt code, work around it by setting the loaded video back to the beginning (rewind) and play again.
