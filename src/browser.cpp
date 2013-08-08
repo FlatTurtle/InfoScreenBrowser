@@ -95,6 +95,7 @@ QObject *FlatTurtle::WebPage::createPlugin(
 	return result;
 }
 
+
 //
 // Infoscreen interface
 //
@@ -150,8 +151,10 @@ bool FlatTurtle::WebPage::puppetUpdate() {
 bool FlatTurtle::WebPage::enableScreen(bool iEnabled) {
     QString tOutput;
     QStringList tArguments;
-    tArguments << "dpms" << "force" << (iEnabled ? "on" : "off");
-    return system("/usr/bin/xset", tArguments, tOutput);
+    //tArguments << "dpms" << "force" << (iEnabled ? "on" : "off");
+    //return system("/usr/bin/xset", tArguments, tOutput);
+    tArguments << (iEnabled ? "on" : "off");
+    return system("/usr/local/bin/powerdisplay.sh", tArguments, tOutput);
 }
 
 bool FlatTurtle::WebPage::soundControl(const QString &cmd) {
@@ -181,12 +184,12 @@ bool FlatTurtle::WebPage::loadURL(const QString link){
     return true;
 }
 
-
 bool FlatTurtle::WebPage::clearCache(){
     QWebSettings::clearMemoryCaches();
     qApp->processEvents();
     return true;
 }
+
 
 //
 // Auxiliary
