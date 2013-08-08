@@ -1,4 +1,6 @@
 #!/bin/bash
+rm ../infoscreenbrowser*
+git pull
 rm debian/rules
 ln -s `pwd`/debian/efikamx-rules debian/rules
 rm src/Makefile
@@ -17,6 +19,6 @@ echo ""
 echo "----------------------------------"
 echo "all done... sign & publicize with:"
 echo "----------------------------------"
-echo "(1)	dpkg-sig -k repository@flatturtle.com --sign builder infoscreenbrowser..."
-echo "(2)	reprepro --verbose --basedir /srv/debian/efikamx includedeb wheezy infoscreenbrowser..."
+echo "(1)	dpkg-sig -k repository@flatturtle.com --sign builder infoscreenbrowser_..."
+echo "(2)	reprepro --verbose --basedir /srv/debian/efikamx includedeb wheezy infoscreenbrowser_..."
 echo ""

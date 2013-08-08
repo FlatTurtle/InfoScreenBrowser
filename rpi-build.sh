@@ -1,4 +1,6 @@
 #!/bin/bash
+rm ../infoscreenbrowser*
+git pull
 rm debian/rules
 ln -s `pwd`/debian/rpi-rules debian/rules
 rm src/Makefile
