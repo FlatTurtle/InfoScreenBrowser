@@ -182,6 +182,7 @@ bool FlatTurtle::WebPage::loadURL(const QString link){
     QUrl url = QUrl(link);
     NetWorkTest *t = new NetWorkTest();
     t->checkSite("https://data.flatturtle.com");
+    delete t;
     mainFrame()->load(url);
     return true;
 }
