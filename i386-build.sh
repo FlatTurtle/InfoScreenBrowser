@@ -8,8 +8,7 @@ rm src/*.o
 rm -r build/
 mkdir build/
 cd build/
-#/usr/local/Trolltech/Qt-4.8.4/bin/qmake ../
-qmake-qt4 ../
+/usr/local/Trolltech/Qt-4.8.4/bin/qmake ../
 make
 make install
 cd ..
