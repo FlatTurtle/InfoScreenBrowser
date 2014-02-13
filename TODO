@@ -1,0 +1,12 @@
+XMPP
+----
+
+Improve security (ship botmaster certificate, passwords, ...)
+
+Reconnection through QXmppReconnectionManager
+
+QHostInfo::localDomain not working
+
+QSetting->value("reconnection/interval", 60000) not working (returns 0? corrupt QSettings?)
+
+Reconnection when already reconnecting gives error

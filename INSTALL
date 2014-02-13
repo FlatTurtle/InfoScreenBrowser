@@ -1,0 +1,13 @@
+Regular build process:
+	mkdir build && cd build
+	qmake ../
+	make
+	make install
+
+Debian build process:
+	dpkg-buildpackage -uc -us
+NOTE: if building for armhf, you'll most likely need to build on-device
+      (cross-compilation for armhf isn't that easy)
+
+Packages:
+apt-get install pkg-tools build-essential libqjson-dev libqxmpp-dev git libqtwebkit-dev debhelper devscripts libparse-debcontrol-perl

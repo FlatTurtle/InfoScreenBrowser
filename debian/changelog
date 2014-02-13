@@ -1,0 +1,184 @@
+infoscreenbrowser (1.4-1) unstable; urgency=low
+
+  * Forgot to delete another NetworkTest object
+
+ -- Johan Dams <johan@flatturtle.com>  Fri, 14 Oct 2013 00:25:45 +0200
+
+infoscreenbrowser (1.4) unstable; urgency=low
+
+  * mem leak fix
+
+ -- Johan Dams <johan@flatturtle.com>  Fri, 30 Sep 2013 23:13:40 +0200
+
+infoscreenbrowser (1.3-3) unstable; urgency=low
+
+  * fixed version
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Fri, 13 Sep 2013 17:47:33 +0200
+
+infoscreenbrowser (1.3-2) unstable; urgency=low
+
+  * changed xset dpms to support rpi
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Thu, 8 Aug 2013 17:10:54 +0200
+
+infoscreenbrowser (1.3-1) unstable; urgency=low
+
+  * Different approach to locking video...
+
+ -- Johan Dams <johan@flatturtle.com>  Tue, 6 Aug 2013 17:21:03 +0200
+
+infoscreenbrowser (1.3) unstable; urgency=low
+
+  * This should fix video lock ups. The issue is related to Qt somehow opening the file after every replay and probably not releasing resources properly. Instead of digging into the Qt code, work around it by setting the loaded video back to the beginning (rewind) and play again.
+
+ -- Johan Dams <johan@flatturtle.com>  Mon, 5 Aug 2013 16:48:50 +0200
+
+infoscreenbrowser (1.2-6) unstable; urgency=low
+
+  * Return statement missing.
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Sat, 6 Jul 2013 17:57:57 +0200
+
+infoscreenbrowser (1.2-5) unstable; urgency=low
+
+  * provided application.clearCache() to clear browser cache
+
+ -- Pieter Colaert <pieter@flatturtle.com>  Mon, 10 Jun 2013 22:12:11 +0200
+
+infoscreenbrowser (1.2-4) unstable; urgency=low
+
+  * Add method to load url from javascript besides using document.location.href. Use application.loadURL("Your URL here..."). This is to test the network availability check. (Johan)
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Sat, 8 Jun 2013 09:38:01 +0200
+
+infoscreenbrowser (1.2-3) unstable; urgency=low
+
+  * Qt everywhere update
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Mon, 3 Jun 2013 09:19:21 +0200
+
+infoscreenbrowser (1.2-2) unstable; urgency=low
+
+  * Added some telnet debugging (Johan)
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Wed, 30 May 2013 00:48:05 +0200
+
+infoscreenbrowser (1.2-1) unstable; urgency=low
+
+  * Ok, let's eliminate some other stuff: can you update the browser removing the line: timer->start(5000); from browser.cpp. Let's see if that makes any difference. It will cause issues with the traffic layer, but we can find another fix in case this one is by any chance the cause... (Johan)
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Wed, 29 May 2013 13:08:16 +0200
+
+infoscreenbrowser (1.2) unstable; urgency=low
+
+  * In case of no internet, keep trying until it can access the interwebs (Johan),
+  * Updated Puppet path (Pieter),
+  * Added takeScreen(); function (Pieter),
+  * Add a simple TCP threaded server for use with Monit (Johan).
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Tue, 26 May 2013 23:02:16 +0300
+
+infoscreenbrowser (1.1) unstable; urgency=low
+
+  * Attempt to fix memory leak (cc Johan).
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Fri, 1 Mar 2013 21:48:06 +0100
+
+infoscreenbrowser (1.0-2) unstable; urgency=low
+
+  * Applied Johan's patch in an attempt to solve the Gmaps traffic layer issue.
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Thu, 24 Feb 2013 16:14:06 +0100
+
+infoscreenbrowser (1.0-1) unstable; urgency=low
+
+  * Reverted 1.0 changes, as this didn't solve anything and seemed to cause issues.
+
+ -- Yeri Tiete <Yeri@flatturtle.com>  Thu, 21 Feb 2013 16:35:06 +0100
+
+infoscreenbrowser (1.0) unstable; urgency=low
+
+  * Added caching removal
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Mon, 11 Feb 2013 15:27:06 +0100
+
+infoscreenbrowser (0.9) unstable; urgency=low
+
+  * Player won't loop video any longer and removed test function
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Tue, 4 Dec 2012 23:26:06 +0100
+
+infoscreenbrowser (0.8-4) unstable; urgency=low
+
+  * recompiled with other rule set.
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Tue, 27 Nov 2012 10:21:10 +0100
+
+infoscreenbrowser (0.8-3) unstable; urgency=low
+
+  * recompiled with /usr/local/Trolltech/Qt-4.8.3/bin/qmake
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Sun, 25 Nov 2012 01:23:34 +0100
+
+infoscreenbrowser (0.8-2) unstable; urgency=low
+
+  * re-added HTTPS -.-)
+
+ -- Yeri Tiete <yeri@flatturtle.com>  Tue, 20 Nov 2012 23:16:59 +0100
+
+infoscreenbrowser (0.8-1) unstable; urgency=low
+
+  * Removed HTTPS
+
+ -- Yeri Tiete <yeri@FlatTurtle.com>  Mon, 19 Nov 2012 13:12:59 +0100
+
+infoscreenbrowser (0.8) unstable; urgency=low
+
+  * Allow for custom plugins in WebKit with overloaded createPlugin(), in this case to allow a custom Phonon VideoPlayer object to be embedded. The MyPlayer clasee creates a new metatype with some additional slots for control. This metatype has to be registered well in advance, so qRegisterMetaType() in main() is the first thing called.
+
+ -- Johan Dams <johan.dams@nordicaurum.com>  Sun, 18 Nov 2012 19:01:00 +0100
+
+infoscreenbrowser (0.7) unstable; urgency=low
+
+  * bug fixes
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Fri, 02 Nov 2012 14:15:41 +0100
+
+infoscreenbrowser (0.6) unstable; urgency=low
+
+  * added mpd support
+
+ -- Pieter Colpaert <pieter@flatturtle.com>  Fri, 02 Nov 2012 00:34:41 +0100
+
+infoscreenbrowser (0.5-1-FlatTurtle) unstable; urgency=low
+
+  * changed useragent to provide a bit more information.
+
+ -- Yeri Tiete <yeri@flatturtle.com> Thu, 20 Sep 2012 02:33:20 +0200
+
+infoscreenbrowser (0.4-1.1-FlatTurtle) unstable; urgency=low
+
+  * fixed enableScreen to work after page change.
+
+ -- Pieter Colpaert <pieter@flatturtle.com> Wed, 2 May 2012 01:38:50 +0200
+
+infoscreenbrowser (0.3-1.1) unstable; urgency=low
+
+  * Adding enableScreen command.
+
+ -- Tim Besard <tim.besard@gmail.com>  Tue, 17 Apr 2012 14:23:15 +0200
+
+infoscreenbrowser (0.2-1) unstable; urgency=low
+
+  * Adding an application interface (currently only reboot()).
+  * Fixing the user agent to a more compatible string.
+  * Subscribing to the admin user.
+
+ -- Tim Besard <tim.besard@gmail.com>  Wed, 11 Apr 2012 16:24:01 +0200
+
+infoscreenbrowser (0.1-1) unstable; urgency=low
+
+  * Initial package.
+
+ -- Tim Besard <tim.besard@gmail.com>  Thu, 5 Apr 2012 09:36:05 +0200

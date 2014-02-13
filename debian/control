@@ -1,0 +1,20 @@
+Source: infoscreenbrowser
+Maintainer: Yeri Tiete <yeri@flatturtle.com>
+Homepage: http://flatturtle.com/
+Priority: extra
+Build-Depends: debhelper (>= 7.0.50~), qt4-qmake, pkg-config, libqt4-dev, libqtwebkit-dev, libqxmpp-dev
+Standards-Version: 3.8.4
+Vcs-Git: git://github.com/FlatTurtle/InfoScreenBrowser.git
+Vcs-Browser: https://github.com/FlatTurtle/InfoScreenBrowser
+
+Package: infoscreenbrowser
+Section: lib
+Architecture: any
+Depends: libqt4-core, libqt4-gui, libqt4-xml, libqt4-webkit, ${misc:Depends}, ${shlibs:Depends}
+Description: FlatTurtle infoscreen browser
+
+Package: infoscreenbrowser-dbg
+Section: libdevel
+Architecture: any
+Depends: libqt4-core (= ${binary:Version}), ${misc:Depends}
+Description: FlatTurtle infoscreen browser (debug symbols)
