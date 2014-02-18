@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     a.setOrganizationName("FlatTurtle");
     a.setOrganizationDomain("FlatTurtle.com");
     a.setApplicationName("InfoScreenBrowser");
-    a.setApplicationVersion("1.5");
+    a.setApplicationVersion("2.0");
 
     return a.exec();
 }
