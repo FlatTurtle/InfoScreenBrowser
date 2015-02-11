@@ -114,8 +114,8 @@ bool WebPage::loadURL(const QString link){
 }
 
 bool WebPage::clearCache(){
-    QWebSettings::clearMemoryCaches();
-    qApp->processEvents();
+    //QWebSettings::clearMemoryCaches();
+    //qApp->processEvents();
     return true;
 }
 

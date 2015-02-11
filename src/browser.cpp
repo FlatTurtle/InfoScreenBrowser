@@ -7,6 +7,7 @@
 
 // Library includes
 #include <QHostInfo>
+#include <QNetworkDiskCache>
 
 Browser::Browser(QWidget *parent) :
     QMainWindow(parent),
@@ -20,7 +21,12 @@ Browser::Browser(QWidget *parent) :
         QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
     }
 
-    QWebSettings::setMaximumPagesInCache(1);
+    QWebSettings::setMaximumPagesInCache(10);
+
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+    QNetworkDiskCache *diskCache = new QNetworkDiskCache(this);
+    diskCache->setCacheDirectory("/tmp/cache");
+    manager->setCache(diskCache);
 
     // Check connectivity, and keep trying
     NetWorkTest *t = new NetWorkTest();
@@ -33,6 +39,7 @@ Browser::Browser(QWidget *parent) :
     // Our subclassed webpage 
     view->setPage(new WebPage(this));
 
+    view->page()->setNetworkAccessManager(manager);
 
 #ifdef DEVEL
     qWarning() << "WARNING: using development infoscreen";

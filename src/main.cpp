@@ -9,14 +9,16 @@ int main(int argc, char *argv[])
     qRegisterMetaType<MyPlayer>("MyPlayer");
 
     QApplication a(argc, argv);
-    Browser w;
-    w.show();
-
+    
     // Configure the application
     a.setOrganizationName("FlatTurtle");
     a.setOrganizationDomain("FlatTurtle.com");
     a.setApplicationName("InfoScreenBrowser");
-    a.setApplicationVersion("2.0");
+    a.setApplicationVersion("2.1");
+    
+    // Launch the bowser
+    Browser w;
+    w.show();
 
     return a.exec();
 }
